@@ -1,5 +1,5 @@
-/* import fontawesome icons */
-@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css";
+/* import google font "Kanit" */
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
 
 * {
   font-family: 'Kanit', sans-serif;
