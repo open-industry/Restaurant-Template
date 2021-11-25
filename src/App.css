@@ -4,3 +4,7 @@
 * {
   box-sizing: border-box;
 }
+
+.active-font {
+  color: #C79200!important;
+}
