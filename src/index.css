@@ -7,3 +7,8 @@
   padding: 0;
   margin: 0;
 }
+
+body {
+  min-height: 100vh;
+  background-color: #CC0F35;
+}

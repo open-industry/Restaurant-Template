@@ -9,7 +9,7 @@ import 'bulma/css/bulma.min.css';
 
 const navItems = ['Home', 'Menu', 'Contact'];
 
-// icon className selector function for font awesome
+// helper function for font awesome icon className slection based on nav item
 const iconClass = (nav) => {
   switch (nav) {
       case navItems[0]:
@@ -24,8 +24,10 @@ const iconClass = (nav) => {
 };
 
 function App() {
+  // state for navbar
   const [activeNav, setActiveNav] = useState(() => navItems[0]);
 
+  // onClick handler for Link component to update activeNav state
   const handleNavClick = (nav) => {
     setActiveNav(pevNav => nav);
   }
@@ -39,7 +41,7 @@ function App() {
       <main className="section has-background-danger-dark">
         <div className="box">
           <div className="container has-background-white">
-            <div className="tabs is-large is-boxed is-centered">
+            <div className="tabs is-large is-boxed is-centered desktop">
               <ul>
                 {navItems.map((item) => (
                   <li key={item} className={item === activeNav ? "is-active" : null}>
@@ -48,7 +50,7 @@ function App() {
                       className={item === activeNav ? "active-font" : "has-text-warning-dark"}
                       onClick={() => handleNavClick(item)}
                     >
-                      <span className="icon is-small has-text-grey-dark">
+                      <span className={`icon is-small ${item === activeNav ? 'has-text-danger-dark' : 'has-text-grey-dark'}`}>
                         <i className={`${iconClass(item)} is-size-6`}></i>
                       </span>
                       {item}

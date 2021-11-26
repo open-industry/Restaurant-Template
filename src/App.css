@@ -5,6 +5,31 @@
   box-sizing: border-box;
 }
 
+/* for Link components */
 .active-font {
   color: #C79200!important;
+}
+
+/* if display is less than or equal to 1023px (less than desktop) */
+@media (max-width: 1023px) {
+  article {
+    width: 100%;
+  }
+
+  /* display for desktop only, hide on mobile */
+  .desktop {
+    display: none!important;
+  }
+}
+
+/* display is greater than or equal to 1024px (desktop only) */
+@media (min-width: 1024px) {
+    article {
+      width: 50%;
+  }
+
+  /* display for mobile only, hide on desktop */
+  .mobile {
+    display: none!important;
+  }  
 }
