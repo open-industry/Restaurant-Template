@@ -1,6 +1,8 @@
 import React from 'react';
 import '../App.css';
 
+// create custom component that styles its children and "title" prop
+
 export default function Home() {
 
   return (

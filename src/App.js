@@ -1,36 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 // BrowserRouter in index.js
-import { Route, Routes, Link } from 'react-router-dom';
-import Home from './components/home.js';
-import Menu from './components/menu.js';
-import Contact from './components/contact.js';
+import { Route, Routes } from 'react-router-dom';
+import Home from './components/Home.js';
+import Menu from './components/Menu.js';
+import Contact from './components/Contact.js';
+import NavLinks from './components/NavLinks.js';
 import './App.css';
 import 'bulma/css/bulma.min.css';
 
-const navItems = ['Home', 'Menu', 'Contact'];
-
-// helper function for font awesome icon className slection based on nav item
-const iconClass = (nav) => {
-  switch (nav) {
-      case navItems[0]:
-        return 'fas fa-house';
-      case navItems[1]:
-        return 'fas fa-utensils';
-      case navItems[2]:
-        return 'fas fa-phone';
-      default:
-        return 'fas fa-house';
-  };
-};
 
 function App() {
-  // state for navbar
-  const [activeNav, setActiveNav] = useState(() => navItems[0]);
-
-  // onClick handler for Link component to update activeNav state
-  const handleNavClick = (nav) => {
-    setActiveNav(pevNav => nav);
-  }
 
   return (		
     <>
@@ -43,20 +22,7 @@ function App() {
           <div className="container has-background-white">
             <div className="tabs is-large is-boxed is-centered desktop">
               <ul>
-                {navItems.map((item) => (
-                  <li key={item} className={item === activeNav ? "is-active" : null}>
-                    <Link
-                      to={`/${item !== navItems[0] ? item.toLowerCase() : ""}`}
-                      className={item === activeNav ? "active-font" : "has-text-warning-dark"}
-                      onClick={() => handleNavClick(item)}
-                    >
-                      <span className={`icon is-small ${item === activeNav ? 'has-text-danger-dark' : 'has-text-grey-dark'}`}>
-                        <i className={`${iconClass(item)} is-size-6`}></i>
-                      </span>
-                      {item}
-                    </Link>
-                  </li>
-                ))}							
+                <NavLinks />
               </ul>
             </div>
           </div>
