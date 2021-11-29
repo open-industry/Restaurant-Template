@@ -1,0 +1,18 @@
+/* debug why sidebar doesnt fill parent */
+.nav-menu {
+  position: absolute;
+  background-color: #CC0F35;
+  z-index: 1;
+  transition: 850ms;
+  padding: 0px 1.5rem;
+  /* height: 100%; */
+  left: -100%;
+}
+
+.nav-menu.is-active {
+  left: 0;
+}
+
+li.is-active {
+  background-color: #ffffff;
+}

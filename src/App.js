@@ -5,6 +5,7 @@ import Home from './components/Home.js';
 import Menu from './components/Menu.js';
 import Contact from './components/Contact.js';
 import NavLinks from './components/NavLinks.js';
+import Sidebar from './components/Sidebar.js';
 import './App.css';
 import 'bulma/css/bulma.min.css';
 
@@ -18,6 +19,7 @@ function App() {
         <h2 className="subtitle is-3 has-text-white-ter">Fine Dilatory Cuisine</h2>				
       </header>
       <main className="section has-background-danger-dark">
+        <Sidebar />
         <div className="box">
           <div className="container has-background-white">
             <div className="tabs is-large is-boxed is-centered desktop">

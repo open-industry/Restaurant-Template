@@ -1,21 +1,25 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { IconContext } from 'react-icons';
+import { FaUtensils, FaPhoneAlt } from 'react-icons/fa';
+import { IoHomeSharp } from 'react-icons/io5';
 import "../App.css";
 import "bulma/css/bulma.min.css";
 
 const navItems = ['Home', 'Menu', 'Contact'];
 
+
 // helper function for font awesome icon className slection based on nav item
-const iconClass = (nav) => {
+const iconSelector = (nav) => {
   switch (nav) {
-      case navItems[0]:
-        return 'fas fa-house';
-      case navItems[1]:
-        return 'fas fa-utensils';
-      case navItems[2]:
-        return 'fas fa-phone';
-      default:
-        return 'fas fa-house';
+    case navItems[0]:
+      return <IoHomeSharp />;
+    case navItems[1]:
+      return <FaUtensils />;
+    case navItems[2]:
+      return <FaPhoneAlt />;
+    default:
+      return <IoHomeSharp />;
   };
 };
 
@@ -32,19 +36,24 @@ function NavLinks() {
   return (
     <>
       {navItems.map((item) => (
-        <li key={item} className={item === activeNav ? "is-active" : null}>
+        <li key={item} className={item === activeNav ? "is-active" : ""}>
           <Link
             to={`/${item !== navItems[0] ? item.toLowerCase() : ""}`}
             className={item === activeNav ? "active-font" : "has-text-warning-dark"}
             onClick={() => handleNavClick(item)}
           >
-            <span className={`icon is-small ${item === activeNav ? 'has-text-danger-dark' : 'has-text-grey-dark'}`}>
-              <i className={`${iconClass(item)} is-size-6`}></i>
-            </span>
-            {item}
+            <div className="icon-text is-align-items-center">
+              <span className={`icon ${item === activeNav ? 'has-text-danger-dark' : 'has-text-grey-dark'}`}>
+                {/* provided className for react-icons for sizing using bulma and set vertical alignment */}
+                <IconContext.Provider value={{ className: "is-size-6", style: { verticalAlign: "middle" } }}>
+                  {iconSelector(item)}
+                </IconContext.Provider>
+              </span>
+              {item}
+            </div>
           </Link>
         </li>
-      ))}      
+      ))}
     </>
   )
 }

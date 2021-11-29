@@ -1,13 +1,19 @@
-/* import fontawesome icons */
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css');
-
 * {
   box-sizing: border-box;
+}
+
+/* change main height attribute to allow sidebar to fit 100% */
+main {
 }
 
 /* for Link components */
 .active-font {
   color: #C79200!important;
+}
+
+.react-icons {
+  vertical-align: middle;
+  font-size: 1rem;
 }
 
 /* if display is less than or equal to 1023px (less than desktop) */
