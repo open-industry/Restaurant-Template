@@ -1,4 +1,5 @@
 import React from 'react';
+import mcdnld from '../img/mcdnld.png';
 import '../App.css';
 
 // create custom component that styles its children and "title" prop
@@ -6,31 +7,20 @@ import '../App.css';
 export default function Home() {
 
   return (
-    <div className="is-flex is-flex-direction-column is-align-items-center pt-5">
+    <>    
       <article className="message is-warning">
-        <div className="message-header has-text-danger-dark">
-          <p>About</p>
-        </div>
-        <div className="message-body">
-          <p>Bla bla bla bla</p>
+        <div className="message-body has-text-centered">
+          <p>Why so serious?</p>
+          <p>Put a smile on that face!</p>
+          <div className="box mt-5 mx-auto img-container">
+            <figure className="image is-1by1">
+              <img className="is-rounded" src={mcdnld} alt="mcdnld" />
+            </figure>
+          </div>
+          <p>The best slow food in Gotham</p>
+          {/* <p>The clown's secret recipe with 1 secret herb and spice</p> */}
         </div>
       </article>
-      <article className="message is-warning">
-        <div className="message-header has-text-danger-dark">
-          <p>Hours</p>
-        </div>
-        <div className="message-body">
-          <p>Bla bla bla bla</p>
-        </div>
-      </article>
-      <article className="message is-warning">
-        <div className="message-header has-text-danger-dark">
-          <p>Location</p>
-        </div>
-        <div className="message-body">
-          <p>Bla bla bla bla</p>
-        </div>
-      </article>
-    </div>
+    </>
   );
 };

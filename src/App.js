@@ -18,17 +18,15 @@ function App() {
         <h1 className="title is-1 has-text-warning">McDnld's Rstrnt</h1>
         <h2 className="subtitle is-3 has-text-white-ter">Fine Dilatory Cuisine</h2>				
       </header>
-      <main className="section has-background-danger-dark">
+      <main className="section has-background-danger-dark">        
         <Sidebar />
         <div className="box">
-          <div className="container has-background-white is-hidden-touch">
-            <div className="tabs is-large is-boxed is-centered">
-              <ul>
-                <NavLinks />
-              </ul>
-            </div>
+          <div className="tabs is-large is-boxed is-centered is-hidden-touch">
+            <ul>
+              <NavLinks />
+            </ul>
           </div>
-          <div className="container has-background-white">
+          <div className="is-flex is-flex-direction-column is-align-items-center has-background-white">
             <Routes>
               <Route path="/menu" element={<Menu/>} />
               <Route path="/contact" element={<Contact/>} />
