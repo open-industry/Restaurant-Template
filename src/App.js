@@ -21,8 +21,8 @@ function App() {
       <main className="section has-background-danger-dark">
         <Sidebar />
         <div className="box">
-          <div className="container has-background-white">
-            <div className="tabs is-large is-boxed is-centered desktop">
+          <div className="container has-background-white is-hidden-touch">
+            <div className="tabs is-large is-boxed is-centered">
               <ul>
                 <NavLinks />
               </ul>
@@ -37,6 +37,17 @@ function App() {
           </div>
         </div>
       </main>
+      {/* <footer className="is-flex is-justify-content-center">
+        <a href="https://github.com/anon-legion" target="_blank" rel="noreferrer nofollow">
+          <p className="is-clickable is-size-5 has-text-grey-dark">Copyright © 2021 =GV=
+            <span className="icon-text">
+              <span className="icon is-medium has-text-grey-dark">
+                <i className="fab fa-github is-size-4"></i>
+              </span>
+            </span>
+          </p>
+        </a>
+      </footer> */}
     </>
   );
 }

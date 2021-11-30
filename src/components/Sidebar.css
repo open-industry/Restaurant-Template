@@ -1,18 +1,34 @@
-/* debug why sidebar doesnt fill parent */
+/*  sets sidebar to overlay page main content,
+    requires <main> or parent position: relative (!== static) */
 .nav-menu {
   position: absolute;
   background-color: #CC0F35;
   z-index: 1;
   transition: 850ms;
-  padding: 0px 1.5rem;
-  /* height: 100%; */
+  padding: 0px .5rem;
+  height: 100%;
   left: -100%;
 }
 
+/* slides sidebar to view when active */
 .nav-menu.is-active {
   left: 0;
+  transition: 350ms;
 }
 
+/* highlights active nav item */
 li.is-active {
   background-color: #ffffff;
+  border-radius: 5px;
+}
+
+/* add gap between nav links in sidebar and icreases size of container */
+.sidebar-links li {
+  margin-top: .5rem;
+  padding: .5rem 1rem;
+}
+
+/* set nav links font color except for link */
+.sidebar-links li a:not(.active-font) {
+  color: #ffe08a!important;
 }

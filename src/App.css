@@ -2,10 +2,6 @@
   box-sizing: border-box;
 }
 
-/* change main height attribute to allow sidebar to fit 100% */
-main {
-}
-
 /* for Link components */
 .active-font {
   color: #C79200!important;
@@ -18,13 +14,14 @@ main {
 
 /* if display is less than or equal to 1023px (less than desktop) */
 @media (max-width: 1023px) {
-  article {
-    width: 100%;
+  /* for sidebar position: absolute to achieve height: 100% */
+  main {
+    position: relative;
+    height: 100%;
   }
 
-  /* display for desktop only, hide on mobile */
-  .desktop {
-    display: none!important;
+  article {
+    width: 100%;
   }
 }
 
@@ -32,10 +29,5 @@ main {
 @media (min-width: 1024px) {
     article {
       width: 50%;
-  }
-
-  /* display for mobile only, hide on desktop */
-  .mobile {
-    display: none!important;
   }  
 }
