@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './components/Home.js';
 import Menu from './components/Menu.js';
 import Contact from './components/Contact.js';
-import NavLinks from './components/NavLinks.js';
+import HorizontalNav from './components/HorizontalNav.js';
 import Sidebar from './components/Sidebar.js';
 import './App.css';
 import 'bulma/css/bulma.min.css';
@@ -21,11 +21,7 @@ function App() {
       <main className="section has-background-danger-dark">        
         <Sidebar />
         <div className="box">
-          <div className="tabs is-large is-boxed is-centered is-hidden-touch">
-            <ul>
-              <NavLinks />
-            </ul>
-          </div>
+          <HorizontalNav />
           <div className="is-flex is-flex-direction-column is-align-items-center has-background-white">
             <Routes>
               <Route path="/menu" element={<Menu/>} />
@@ -35,17 +31,6 @@ function App() {
           </div>
         </div>
       </main>
-      {/* <footer className="is-flex is-justify-content-center">
-        <a href="https://github.com/anon-legion" target="_blank" rel="noreferrer nofollow">
-          <p className="is-clickable is-size-5 has-text-grey-dark">Copyright © 2021 =GV=
-            <span className="icon-text">
-              <span className="icon is-medium has-text-grey-dark">
-                <i className="fab fa-github is-size-4"></i>
-              </span>
-            </span>
-          </p>
-        </a>
-      </footer> */}
     </>
   );
 }

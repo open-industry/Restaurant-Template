@@ -17,8 +17,7 @@ export default function Home() {
               <img className="is-rounded" src={mcdnld} alt="mcdnld" />
             </figure>
           </div>
-          <p>The best slow food in Gotham</p>
-          {/* <p>The clown's secret recipe with 1 secret herb and spice</p> */}
+          <p>The Clown's secret blend of 1 herb and spice</p>
         </div>
       </article>
     </>
