@@ -4,10 +4,13 @@ import { Link } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { MdClose } from 'react-icons/md';
-import NavLinks from './NavLinks';
+import { useNavContext } from './NavLinks.js';
 import './Sidebar.css';
 
 function  Sidebar() {
+  // NavLinks component provided as context by NavLinks.js
+  const NavLinks = useNavContext();
+
   // open/close sidebar
   const [sidebar, setSidebar] = useState(false);
 

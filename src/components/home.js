@@ -1,6 +1,5 @@
 import React from 'react';
 import mcdnld from '../img/mcdnld.png';
-import '../App.css';
 
 // create custom component that styles its children and "title" prop
 
