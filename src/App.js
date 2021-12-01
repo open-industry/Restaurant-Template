@@ -1,9 +1,9 @@
 import React from 'react';
 // BrowserRouter in index.js
 import { Route, Routes } from 'react-router-dom';
-import Home from './components/Home.js';
-import Menu from './components/Menu.js';
-import Contact from './components/Contact.js';
+import Home from './pages/Home.js';
+import Menu from './pages/Menu.js';
+import Contact from './pages/Contact.js';
 import HorizontalNav from './components/HorizontalNav.js';
 import Sidebar from './components/Sidebar.js';
 import { NavProvider } from './components/NavLinks.js';
