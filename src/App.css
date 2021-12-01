@@ -1,3 +1,38 @@
 * {
   box-sizing: border-box;
 }
+
+/* for Link components */
+.active-font {
+  color: #C79200!important;
+}
+
+/* if display is less than or equal to 1023px (less than desktop) */
+@media (max-width: 1023px) {
+  /* for sidebar position: absolute to achieve height: 100% */
+  main {
+    position: relative;
+    height: 100%;
+  }
+
+  article {
+    width: 100%;
+  }
+  
+  .img-container {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* display is greater than or equal to 1024px (desktop only) */
+@media (min-width: 1024px) {
+    article {
+      width: 50%;
+  }
+  
+  .img-container {
+    width: 66%;
+    height: 66%;
+  }  
+}
