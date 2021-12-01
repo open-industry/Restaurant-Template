@@ -1,8 +1,6 @@
 import React from 'react';
 import mcdnld from '../img/mcdnld.png';
 
-// create custom component that styles its children and "title" prop
-
 export default function Home() {
 
   return (
@@ -16,7 +14,7 @@ export default function Home() {
               <img className="is-rounded" src={mcdnld} alt="mcdnld" />
             </figure>
           </div>
-          <p>The Clown's secret blend of 1 herb and spice</p>
+          <p>Best slow food with secret blend of 1 herb and spice</p>
         </div>
       </article>
     </>
