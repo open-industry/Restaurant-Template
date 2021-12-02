@@ -6,7 +6,8 @@
   z-index: 1;
   transition: 850ms;
   padding: 0px .5rem;
-  height: 100%;
+  top: calc(48px + 24px); /* parent padding + icon height */
+  bottom: 0;
   left: -100%;
 }
 

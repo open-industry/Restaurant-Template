@@ -25,13 +25,11 @@ function App() {
           <div className="container">
             <div className="box">
               <HorizontalNav />
-              <div className="is-flex is-flex-direction-column is-align-items-center has-background-white">
-                <Routes>
-                  <Route path="/menu" element={<Menu/>} />
-                  <Route path="/contact" element={<Contact/>} />
-                  <Route path="/" element={<Home/>} />
-                </Routes>
-              </div>
+              <Routes>
+                <Route path="/menu" element={<Menu/>} />
+                <Route path="/contact" element={<Contact/>} />
+                <Route path="/" element={<Home/>} />
+              </Routes>
             </div>
           </div>
         </NavProvider>
