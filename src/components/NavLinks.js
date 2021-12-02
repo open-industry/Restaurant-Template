@@ -1,6 +1,6 @@
 import React, { useState, createContext, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { IconContext } from 'react-icons';
+// import { IconContext } from 'react-icons';
 import { FaUtensils, FaPhoneAlt } from 'react-icons/fa';
 import { IoHomeSharp } from 'react-icons/io5';
 
@@ -51,11 +51,11 @@ export const NavProvider = ({ children }) => {
               onClick={() => handleNavClick(item)}
             >
               <div className="icon-text is-align-items-center">
-                <span className={`icon ${item === activeNav ? 'has-text-danger-dark' : 'has-text-grey-dark'}`}>
+                <span className={`icon is-size-6 ${item === activeNav ? 'has-text-danger-dark' : 'has-text-grey-dark'}`}>
                   {/* provided className for react-icons for sizing using bulma and set vertical alignment */}
-                  <IconContext.Provider value={{ className: "is-size-6", style: { verticalAlign: "middle" } }}>
+                  {/* <IconContext.Provider value={{ className: "is-size-6", style: { verticalAlign: "middle" } }}> */}
                     {iconSelector(item)}
-                  </IconContext.Provider>
+                  {/* </IconContext.Provider> */}
                 </span>
                 {item}
               </div>
