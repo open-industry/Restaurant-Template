@@ -9,9 +9,7 @@ export default function Menu() {
   return (
     <div className="tile is-ancestor is-justify-content-center">
       <div className="tile is-parent is-8 is-vertical is-align-items-center">
-        {/* set bulma notification class padding to 5 to center content */}
         <article className="tile is-child notification is-warning is-light p-5">
-          {/* create CSS rule for card hover */}
           <div className="card">
             <div className="card-image has-text-centered">
               <img src={hamburger} alt="burger"/>
@@ -57,32 +55,5 @@ export default function Menu() {
         </article>
       </div>      
     </div>
-    
-    // <>
-    //   <article className="message is-warning">
-    //     <div className="message-header has-text-danger-dark">
-    //       <p>About</p>
-    //     </div>
-    //     <div className="message-body">
-    //       <p>Bla bla bla bla</p>
-    //     </div>
-    //   </article>
-    //   <article className="message is-warning">
-    //     <div className="message-header has-text-danger-dark">
-    //       <p>Hours</p>
-    //     </div>
-    //     <div className="message-body">
-    //       <p>Bla bla bla bla</p>
-    //     </div>
-    //   </article>
-    //   <article className="message is-warning">
-    //     <div className="message-header has-text-danger-dark">
-    //       <p>Location</p>
-    //     </div>
-    //     <div className="message-body">
-    //       <p>Bla bla bla bla</p>
-    //     </div>
-    //   </article>
-    // </>
   );
 };

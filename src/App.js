@@ -6,6 +6,7 @@ import Menu from './pages/Menu.js';
 import Contact from './pages/Contact.js';
 import HorizontalNav from './components/HorizontalNav.js';
 import Sidebar from './components/Sidebar.js';
+import Footer from './components/Footer.js';
 import { NavProvider } from './components/NavLinks.js';
 import './App.css';
 import 'bulma/css/bulma.min.css';
@@ -34,6 +35,7 @@ function App() {
           </div>
         </NavProvider>
       </main>
+      <Footer />
     </>
   );
 }

@@ -2,6 +2,17 @@
   box-sizing: border-box;
 }
 
+/* prevents embedded map from overflowing container */
+iframe {
+  width: calc(100%);
+}
+
+div.card:hover {
+  transform: scale(1.05);
+  border-color: gold;
+  box-shadow: 0 0 .5rem gold;
+}
+
 /* for Link components */
 .active-font {
   color: #C79200!important;
@@ -17,6 +28,11 @@
 
   article {
     width: 100%;
+    max-width: 512px;
+  }
+
+  div.message-body.is-flex {
+    flex-wrap: wrap;
   }
   
   .img-container {
@@ -35,4 +51,12 @@
     width: 66%;
     height: 66%;
   }  
+}
+
+/* keeps footer at the bottom of page
+requires html, body, div#root min-height 100vh */
+div#root > footer {
+  position: sticky;
+  top: 100vh;
+  background-color: #cc0f35;
 }

@@ -8,7 +8,19 @@
   margin: 0;
 }
 
+/* html,
 body {
+  height: 100%;
+  background-color: #CC0F35;
+}
+
+div#root {
+  min-height: 100%;
+} */
+
+html,
+body,
+div#root {
   min-height: 100vh;
   background-color: #CC0F35;
 }
