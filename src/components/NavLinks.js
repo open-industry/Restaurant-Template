@@ -1,4 +1,5 @@
 import React, { useState, createContext, useContext } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 // import { IconContext } from 'react-icons';
 import { FaUtensils, FaPhoneAlt } from 'react-icons/fa';
@@ -30,6 +31,12 @@ export function useNavContext() {
 
 
 export const NavProvider = ({ children }) => {
+  // create state for nav links using useLocation hook
+  // consider raplacing useState with useLocation hook
+  // match className ternary operator with useLocation instead of useState
+  const location = useLocation();
+  console.log(location.pathname);
+
   // state for navbar Links, must be exposed outside of NavLinks component
   // if state is scoped within NavLinks component each component that
   // uses NavLinks as a child creates a separate instance of the state
