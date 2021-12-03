@@ -26,7 +26,7 @@ export default function Menu() {
               <img src={friedBat} alt="fried bat"/>
             </div>
             <div className="card-content">
-              <p className="has-text-warning-dark">₳3.50</p>
+              <p className="has-text-warning-dark">₳6.50</p>
               <p className="title is-5">Fried Bat</p>
             </div>
           </div>
@@ -48,7 +48,7 @@ export default function Menu() {
               <img src={drink} alt=""/>
             </div>
             <div className="card-content">
-              <p className="has-text-warning-dark">₳2.00</p>
+              <p className="has-text-warning-dark">₳3.00</p>
               <p className="title is-5">Facetious Drink</p>
             </div>
           </div>
