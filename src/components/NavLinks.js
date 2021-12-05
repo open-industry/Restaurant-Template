@@ -1,6 +1,6 @@
-import React, { useState, createContext, useContext } from 'react';
+import React, { createContext, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 // import { IconContext } from 'react-icons';
 import { FaUtensils, FaPhoneAlt } from 'react-icons/fa';
 import { IoHomeSharp } from 'react-icons/io5';
@@ -21,6 +21,9 @@ const iconSelector = (nav) => {
   };
 };
 
+// helper function for link path To based on nav item
+const linkPathTo = (item) => `/${item !== navItems[0] ? item.toLowerCase() : ''}`;
+
 const NavContext = createContext();
 
 // custom hook that returns NavContext for use by components that
@@ -31,42 +34,33 @@ export function useNavContext() {
 
 
 export const NavProvider = ({ children }) => {
-  // create state for nav links using useLocation hook
-  // consider raplacing useState with useLocation hook
-  // match className ternary operator with useLocation instead of useState
+  // gets current location from react router
+  // used to set active nav item className with ternary operator
   const location = useLocation();
-  console.log(location.pathname);
 
-  // state for navbar Links, must be exposed outside of NavLinks component
-  // if state is scoped within NavLinks component each component that
-  // uses NavLinks as a child creates a separate instance of the state
-  const [activeNav, setActiveNav] = useState(() => navItems[0]);
-
-  // onClick handler for Link component to update activeNav state
-  const handleNavClick = (nav) => {
-    setActiveNav(pevNav => nav);
-  }
 
   function NavLinks() {
     return (
       <>
         {navItems.map((item) => (
-          <li key={item} className={item === activeNav ? "is-active" : ""}>
-            <Link
-              to={`/${item !== navItems[0] ? item.toLowerCase() : ""}`}
-              className={item === activeNav ? "active-font" : "has-text-warning-dark"}
-              onClick={() => handleNavClick(item)}
+          <li
+            key={item}
+            // compare NavLink path to current location for <li> className
+            className={linkPathTo(item) === location.pathname ? "is-active" : ""}
+          >
+            <NavLink
+              // callback function of NavLink component checks isActive prop and adds className
+              className={({ isActive }) => isActive ? "active-font" : "has-text-warning-dark"}
+              to={linkPathTo(item)}
             >
               <div className="icon-text is-align-items-center">
-                <span className={`icon is-size-6 ${item === activeNav ? 'has-text-danger-dark' : 'has-text-grey-dark'}`}>
-                  {/* provided className for react-icons for sizing using bulma and set vertical alignment */}
-                  {/* <IconContext.Provider value={{ className: "is-size-6", style: { verticalAlign: "middle" } }}> */}
-                    {iconSelector(item)}
-                  {/* </IconContext.Provider> */}
+                {/* compare NavLink path to current location for icon className  */}
+                <span className={`icon is-size-6 ${linkPathTo(item) === location.pathname ? 'has-text-danger-dark' : 'has-text-grey-dark'}`}>
+                  {iconSelector(item)}
                 </span>
                 {item}
               </div>
-            </Link>
+            </NavLink>
           </li>
         ))}
       </>

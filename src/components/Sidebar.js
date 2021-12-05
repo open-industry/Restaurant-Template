@@ -23,10 +23,8 @@ function  Sidebar() {
     <>
       {/* hamburger icon toggles overlay */}
       <Link to="#" className="is-hidden-desktop">
-        <span className="icon has-text-white-ter">
-          <IconContext.Provider value={{ className: 'is-size-4' }}>
-            {sidebar ? <MdClose onClick={toggleSidebar}/> : <GiHamburgerMenu onClick={toggleSidebar}/>}
-          </IconContext.Provider>
+        <span className="icon is-size-4 has-text-white-ter">
+          {sidebar ? <MdClose onClick={toggleSidebar}/> : <GiHamburgerMenu onClick={toggleSidebar}/>}
         </span>
       </Link>
       {/* sidebar overlay menu */}
