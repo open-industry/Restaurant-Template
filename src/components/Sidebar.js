@@ -1,7 +1,6 @@
 // sidebar component for mobile/touch devices, set as first child of main parent container
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { IconContext } from 'react-icons';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { MdClose } from 'react-icons/md';
 import { useNavContext } from './NavLinks.js';

@@ -7,6 +7,7 @@ iframe {
   width: calc(100%);
 }
 
+/* hover effect for menu items */
 div.card:hover {
   transform: scale(1.05);
   border-color: gold;
@@ -31,6 +32,7 @@ div.card:hover {
     max-width: 512px;
   }
 
+  /* allows contact details and map to wrap on touch devices */
   div.message-body.is-flex {
     flex-wrap: wrap;
   }

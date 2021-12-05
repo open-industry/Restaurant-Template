@@ -27,7 +27,7 @@ const linkPathTo = (item) => `/${item !== navItems[0] ? item.toLowerCase() : ''}
 const NavContext = createContext();
 
 // custom hook that returns NavContext for use by components that
-// use NavLinks component as child
+// provides NavLinks component to children
 export function useNavContext() {
   return useContext(NavContext);
 }
