@@ -1,6 +1,26 @@
-# Restaurant Page Template
-<br>
-React based mobile first design Restaurant Webapp
+# **Restaurant Page Template**  
 
-## Responsive design
-## Responsive mobile sidebar overlay
+### React based mobile first Webapp
+
+### Responsive Navbar and pages
+
+### Click *hamburger icon* to toggle sidebar overlay on touch devices  
+
+### Click [here](https://anon-legion.github.io/restaurant-template/) to preview app on GH-Pages
+<br>
+
+---
+
+### **Tech**:
+
+* **JavaScript**
+  - [x] module pattern
+* **ReactJS**
+  - [x] custom hook
+  - [x] custom context component
+  - [x] router (NavLink)
+* **Bulma**
+  - [x] mobile first design
+  - [x] responsive design
+* **CSS**
+* **HTML**
