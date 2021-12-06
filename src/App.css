@@ -25,11 +25,19 @@ div.card:hover {
   main {
     position: relative;
     height: 100%;
+    /* fills remaining height of parent; requires parent display: flex */
+    flex: 1;
   }
 
   article {
     width: 100%;
     max-width: 512px;
+  }
+
+  /* allows <main> to fill remaining space of its parent container */
+  div#root {
+    display: flex;
+    flex-direction: column;
   }
 
   /* allows contact details and map to wrap on touch devices */
@@ -55,10 +63,13 @@ div.card:hover {
   }  
 }
 
-/* keeps footer at the bottom of page
-requires html, body, div#root min-height 100vh */
+/*
+  keeps footer at the bottom of page
+  requires div#root min-height 100vh
+*/
 div#root > footer {
   position: sticky;
   top: 100vh;
-  background-color: #cc0f35;
+  background-color: transparent;
+  z-index: 2;
 }

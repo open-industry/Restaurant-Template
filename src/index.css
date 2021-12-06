@@ -9,6 +9,11 @@
   margin: 0;
 }
 
+
+html {
+  background-color: #CC0F35!important;
+}
+
 /*
   if height value is not set on html and body,
   it will assume the same value given to children
