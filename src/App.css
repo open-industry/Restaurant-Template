@@ -2,6 +2,18 @@
   box-sizing: border-box;
 }
 
+/* prevents embedded map from overflowing container */
+iframe {
+  width: calc(100%);
+}
+
+/* hover effect for menu items */
+div.card:hover {
+  transform: scale(1.05);
+  border-color: gold;
+  box-shadow: 0 0 .5rem gold;
+}
+
 /* for Link components */
 .active-font {
   color: #C79200!important;
@@ -13,10 +25,24 @@
   main {
     position: relative;
     height: 100%;
+    /* fills remaining height of parent; requires parent display: flex */
+    flex: 1;
   }
 
   article {
     width: 100%;
+    max-width: 512px;
+  }
+
+  /* allows <main> to fill remaining space of its parent container */
+  div#root {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* allows contact details and map to wrap on touch devices */
+  div.message-body.is-flex {
+    flex-wrap: wrap;
   }
   
   .img-container {
@@ -35,4 +61,15 @@
     width: 66%;
     height: 66%;
   }  
+}
+
+/*
+  keeps footer at the bottom of page
+  requires div#root min-height 100vh
+*/
+div#root > footer {
+  position: sticky;
+  top: 100vh;
+  background-color: transparent;
+  z-index: 2;
 }

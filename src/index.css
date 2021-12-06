@@ -1,6 +1,7 @@
 /* import google font "Kanit" */
 @import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
 
+/* CSS reset */
 * {
   font-family: 'Kanit', sans-serif;
   box-sizing: border-box;
@@ -8,7 +9,18 @@
   margin: 0;
 }
 
-body {
+
+html {
+  background-color: #CC0F35!important;
+}
+
+/*
+  if height value is not set on html and body,
+  it will assume the same value given to children
+  that is explicitly assigned a value (i.e. div#root)
+*/
+div#root {
   min-height: 100vh;
+  /* min-height: -webkit-fill-available; */
   background-color: #CC0F35;
 }
