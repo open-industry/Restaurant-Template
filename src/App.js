@@ -27,9 +27,9 @@ function App() {
             <div className="box">
               <HorizontalNav />
               <Routes>
-                <Route path="/menu" element={<Menu/>} />
-                <Route path="/contact" element={<Contact/>} />
-                <Route path="/" element={<Home/>} />
+                <Route path="/restaurant-template/menu" element={<Menu/>} />
+                <Route path="/restaurant-template/contact" element={<Contact/>} />
+                <Route path="/restaurant-template/" element={<Home/>} />
               </Routes>
             </div>
           </div>

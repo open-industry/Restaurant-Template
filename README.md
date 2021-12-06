@@ -18,7 +18,7 @@
 * **ReactJS**
   - [x] custom hook
   - [x] custom context component
-  - [x] router (NavLink)
+  - [x] Router and NavLink
 * **Bulma**
   - [x] mobile first design
   - [x] responsive design
