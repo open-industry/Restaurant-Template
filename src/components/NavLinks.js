@@ -23,7 +23,7 @@ const iconSelector = (nav) => {
 
 // helper function for link path To based on nav item
 // added /restaurant-template to path to support gh-pages
-const linkPathTo = (item) => `/restaurant-template/${item !== navItems[0] ? item.toLowerCase() : ''}`;
+const linkPathTo = (item) => `/${item !== navItems[0] ? item.toLowerCase() : ''}`;
 
 const NavContext = createContext();
 
