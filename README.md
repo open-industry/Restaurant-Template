@@ -1,8 +1,9 @@
 # **Restaurant Page Template**  
 
-### React based mobile first Webapp
+### React based restaurant Webapp
 
-### Responsive Navbar and pages
+### Responsive design for mobile, tablet, and desktop
+<br>
 
 ### Click *hamburger icon* to toggle sidebar overlay on touch devices  
 
