@@ -2,12 +2,13 @@
 import React, { useState } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { MdClose } from 'react-icons/md';
-import { useNavContext } from './NavLinks';
+import { useNavContext } from './navContext';
+import NavLinks from './NavLinks';
 import './Sidebar.css';
 
 function Sidebar() {
-  // NavLinks component provided as context by NavLinks.js
-  const NavLinks = useNavContext();
+  // location provided as context by NavLinks.js
+  const location = useNavContext();
 
   // open/close sidebar
   const [sidebar, setSidebar] = useState(false);
@@ -27,7 +28,7 @@ function Sidebar() {
       <div className={`nav-menu is-flex is-hidden-desktop ${sidebar ? 'is-active' : ''}`}>
         <ul className="sidebar-links">
           {/* list of sidebar navlinks as <li> */}
-          <NavLinks />
+          <NavLinks location={location} />
         </ul>
       </div>
     </>

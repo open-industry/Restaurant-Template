@@ -7,7 +7,7 @@ import Contact from './pages/Contact';
 import HorizontalNav from './components/HorizontalNav';
 import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
-import { NavProvider } from './components/NavLinks';
+import { LocationProvider } from './components/navContext';
 import './App.css';
 import 'bulma/css/bulma.min.css';
 
@@ -19,7 +19,7 @@ function App() {
         <h2 className="subtitle is-3 has-text-white-ter">Fine Dilatory Cuisine</h2>
       </header>
       <main className="section has-background-danger-dark">
-        <NavProvider>
+        <LocationProvider>
           <Sidebar />
           <div className="container">
             <div className="box">
@@ -31,7 +31,7 @@ function App() {
               </Routes>
             </div>
           </div>
-        </NavProvider>
+        </LocationProvider>
       </main>
       <Footer />
     </>
