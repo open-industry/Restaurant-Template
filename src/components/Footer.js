@@ -1,12 +1,12 @@
-import React from "react";
-import { FaGithub } from "react-icons/fa";
-
+import React from 'react';
+import { FaGithub } from 'react-icons/fa';
 
 export default function Footer() {
   return (
     <footer className="is-flex is-justify-content-center">
       <a href="https://github.com/anon-legion" target="_blank" rel="noopener noreferrer nofollow">
-        <p className="is-clickable is-size-5 has-text-grey-dark">Copyright © 2021 =GV=
+        <p className="is-clickable is-size-5 has-text-grey-dark">
+          Copyright © 2021 =GV=
           <span className="icon-text">
             <span className="icon is-medium has-text-grey-dark">
               <FaGithub />
@@ -15,5 +15,5 @@ export default function Footer() {
         </p>
       </a>
     </footer>
-  )
-};
+  );
+}

@@ -1,12 +1,11 @@
 // sidebar component for mobile/touch devices, set as first child of main parent container
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { MdClose } from 'react-icons/md';
-import { useNavContext } from './NavLinks.js';
+import { useNavContext } from './NavLinks';
 import './Sidebar.css';
 
-function  Sidebar() {
+function Sidebar() {
   // NavLinks component provided as context by NavLinks.js
   const NavLinks = useNavContext();
 
@@ -15,17 +14,15 @@ function  Sidebar() {
 
   // toggle sidebar for onClick of hamburger icon
   const toggleSidebar = () => {
-    setSidebar(prevState => !prevState);
+    setSidebar((prevState) => !prevState);
   };
 
   return (
     <>
       {/* hamburger icon toggles overlay */}
-      <Link to="#" className="is-hidden-desktop">
-        <span className="icon is-size-4 has-text-white-ter">
-          {sidebar ? <MdClose onClick={toggleSidebar}/> : <GiHamburgerMenu onClick={toggleSidebar}/>}
-        </span>
-      </Link>
+      <button className="icon is-size-4 has-text-white-ter is-hidden-desktop" type="button">
+        {sidebar ? <MdClose onClick={toggleSidebar} /> : <GiHamburgerMenu onClick={toggleSidebar} />}
+      </button>
       {/* sidebar overlay menu */}
       <div className={`nav-menu is-flex is-hidden-desktop ${sidebar ? 'is-active' : ''}`}>
         <ul className="sidebar-links">
@@ -34,7 +31,7 @@ function  Sidebar() {
         </ul>
       </div>
     </>
-  )
+  );
 }
 
-export default Sidebar 
+export default Sidebar;

@@ -11,7 +11,7 @@ function HorizontalNav() {
         <NavLinks />
       </ul>
     </div>
-  )
+  );
 }
 
-export default HorizontalNav
+export default HorizontalNav;

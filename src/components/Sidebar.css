@@ -36,3 +36,8 @@ li.is-active {
 .sidebar-links li a:not(.active-font) {
   color: #ffe08a!important;
 }
+
+button {
+  background-color: transparent;
+  border: none;
+}
