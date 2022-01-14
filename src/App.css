@@ -51,7 +51,7 @@ div.card:hover {
   }
 }
 
-/* display is greater than or equal to 1024px (desktop only) */
+/* display is greater than or equal to 1024px (desktop or greater only) */
 @media (min-width: 1024px) {
     article {
       width: 50%;
@@ -61,6 +61,12 @@ div.card:hover {
     width: 66%;
     height: 66%;
   }  
+}
+
+@media (max-width: 399px) {
+  .hero-body {
+    padding: 0!important;
+  }
 }
 
 /*

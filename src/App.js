@@ -15,8 +15,10 @@ function App() {
   return (
     <>
       <header className="hero has-text-centered has-background-danger-dark">
-        <h1 className="title is-1 has-text-warning">McDnld's Rstrnt</h1>
-        <h2 className="subtitle is-3 has-text-white-ter">Fine Dilatory Cuisine</h2>
+        <div className="hero-body">
+          <h1 className="title is-1 has-text-warning">McDnld's Rstrnt</h1>
+          <h2 className="subtitle is-3 has-text-white-ter">Fine Dilatory Cuisine</h2>
+        </div>
       </header>
       <main className="section has-background-danger-dark">
         <LocationProvider>
