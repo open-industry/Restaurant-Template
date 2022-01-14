@@ -20,6 +20,7 @@
   - [x] custom hook
   - [x] custom context component
   - [x] HashRouter and NavLink
+  - [x] AirBnb code style compliant
 * **Bulma**
   - [x] mobile first design
   - [x] responsive design

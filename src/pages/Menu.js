@@ -9,10 +9,10 @@ export default function Menu() {
   return (
     <div className="tile is-ancestor is-justify-content-center">
       <div className="tile is-parent is-8 is-vertical is-align-items-center">
-        <MenuItem image={hamburger} name="Funnty Burger" price="₳4.19" />
-        <MenuItem image={friedBat} name="Fried Bat" price="₳6.50" />
-        <MenuItem image={steak} name="Hilarious Steak" price="₳8.99" />
-        <MenuItem image={drink} name="Fancy Drink" price="₳3.00" />
+        <MenuItem image={hamburger} name="Funny Burger" price="₳4.19" alt="burger" />
+        <MenuItem image={friedBat} name="Fried Bat" price="₳6.50" alt="fried bat" />
+        <MenuItem image={steak} name="Hilarious Steak" price="₳8.99" alt="steak" />
+        <MenuItem image={drink} name="Fancy Drink" price="₳3.00" alt="soda" />
       </div>
     </div>
   );
