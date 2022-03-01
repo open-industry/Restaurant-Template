@@ -19,6 +19,15 @@ div.card:hover {
   color: #C79200!important;
 }
 
+.is-transparent {
+  background-color: transparent!important;
+  box-shadow: none!important;
+}
+
+.has-text-bgc {
+  color: hsl(348, 86%, 43%);
+}
+
 /* if display is less than or equal to 1023px (less than desktop) */
 @media (max-width: 1023px) {
   /* for sidebar position: absolute to achieve height: 100% */

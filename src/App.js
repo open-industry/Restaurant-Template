@@ -9,7 +9,7 @@ import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
 import { LocationProvider } from './components/navContext';
 import './App.css';
-import 'bulma/css/bulma.min.css';
+// import 'bulma/css/bulma.min.css';
 
 function App() {
   return (
