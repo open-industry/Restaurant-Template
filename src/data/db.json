@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "Funny Burger",
+      "price": 4.19,
+      "alt": "burger",
+      "isAvailable": true
+    },
+    {
+      "id": 2,
+      "name": "Fried Bat",
+      "price": 6.50,
+      "alt": "fried bat",
+      "isAvailable": true
+    },
+    {
+      "id": 3,
+      "name": "Hilarious Steak",
+      "price": 8.99,
+      "alt": "steak",
+      "isAvailable": true
+    },
+    {
+      "id": 4,
+      "name": "Facetious Drink",
+      "price": 3.00,
+      "alt": "soda",
+      "isAvailable": true
+    }
+  ]
+}

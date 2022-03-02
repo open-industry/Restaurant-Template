@@ -12,7 +12,7 @@ export default function Home() {
             <img className="is-rounded" src={mcdnld} alt="mcdnld" />
           </figure>
         </div>
-        <p className="is-size-5 is-size-6-mobile is-italic has-text-weight-light">
+        <p className="is-size-5 is-size-6-touch is-italic has-text-weight-light">
           "Best slow food with secret blend of 1 herb and spice"
           <br />
           —General Saunders
