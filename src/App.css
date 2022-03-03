@@ -67,7 +67,8 @@ div.message-body {
 /* display is greater than or equal to 1024px (desktop or greater only) */
 @media (min-width: 1024px) {
     article {
-      width: 50%;
+      /* width: 50%; */
+      width: 100%;
   }
   
   .img-container {
