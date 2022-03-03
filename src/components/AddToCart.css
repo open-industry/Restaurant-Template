@@ -1,13 +1,15 @@
 .add-to-cart {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 2vw;
   min-height: 10vh;
   min-width: 100vw;
   position: fixed;
   bottom: 0;
   left: 0;
+  border: 1px solid hsl(348, 86%, 43%);
+  box-shadow: 0 0 .5rem hsl(348, 86%, 43%);
 };
 
 /* remove arrows from number input in Chrome, Safari, Edge, Opera */

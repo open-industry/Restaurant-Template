@@ -32,6 +32,10 @@ div.message-body {
   color: hsl(348, 86%, 43%);
 }
 
+.modal-background {
+  background-color: rgba(10,10,10,.70)!important;
+}
+
 /* if display is less than or equal to 1023px (less than desktop) */
 @media (max-width: 1023px) {
   /* for sidebar position: absolute to achieve height: 100% */

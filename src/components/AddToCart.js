@@ -20,17 +20,27 @@ function AddToCart() {
 
   return (
     <div className="add-to-cart has-background-warning">
-      <form className="field has-addons" onSubmit={(e) => e.preventDefault()}>
+      <form className="field has-addons m-0" onSubmit={(e) => e.preventDefault()}>
         <div className="control">
           <button className="button is-danger" type="button" onClick={handleSubtractOnClick}>-</button>
         </div>
         <div className="control">
-          <input className="input" ref={quantityRef} type="number" min={1} max={99} value={quantity} onChange={handleOnChange} />
+          <input
+            className="input"
+            style={{ width: '4ch', textAlign: 'center' }}
+            ref={quantityRef}
+            type="number"
+            min={1}
+            max={99}
+            value={quantity}
+            onChange={handleOnChange}
+          />
         </div>
         <div className="control">
           <button className="button is-danger" type="button" onClick={handleAddOnClick}>+</button>
         </div>
       </form>
+      <button className="button is-danger" style={{ minWidth: '12em', width: '20vw' }} type="button">Add to cart</button>
     </div>
   );
 }
