@@ -4,7 +4,7 @@
 
 /* CSS reset */
 * {
-  font-family: 'Kanit', sans-serif;
+  font-family: 'Kanit', sans-serif!important;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
