@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AddToCart from '../components/AddToCart';
 import MenuItem from '../components/MenuItem';
 import imgSelector from '../img/imgSelector';
@@ -8,6 +8,15 @@ const menuData = require('../data/db.json');
 export default function Menu() {
   const [isAddCart, setIsAddCart] = useState(() => false);
   const [itemFocus, setItemFocus] = useState(() => null);
+  const [isModal, setIsModal] = useState(() => false);
+
+  useEffect(() => {
+    if (isAddCart) {
+      setIsModal(() => true);
+    } else {
+      setTimeout(() => setIsModal(() => false), 300);
+    }
+  }, [isAddCart]);
 
   const toggleModalClick = (id) => {
     setIsAddCart((prevState) => !prevState);
@@ -49,7 +58,7 @@ export default function Menu() {
           ))}
         </div>
       </div>
-      <div className={`modal ${isAddCart ? 'is-active' : ''}`}>
+      <div className={`modal ${isModal ? 'is-active' : ''}`}>
         <div className="modal-background" />
         <div className="modal-content is-flex is-justify-content-center">
           {itemFocus && (
@@ -63,8 +72,7 @@ export default function Menu() {
               forceHover
             />
           )}
-          {/* create style rules for AddToCart to slideup from bottom of viewport */}
-          <AddToCart />
+          <AddToCart isAddCart={isAddCart} />
         </div>
         <button className="modal-close is-large" type="button" onClick={toggleModalClick} />
       </div>

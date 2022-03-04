@@ -5,7 +5,7 @@ import { FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 export default function Contact() {
   return (
     <article className="message is-flex-desktop is-justify-content-center is-warning mx-auto" style={{ width: 'fit-content' }}>
-      <div className="message-body is-flex-desktop" sytle={{ gap: '2vw' }}>
+      <div className="message-body is-flex-desktop" style={{ gap: '2vw' }}>
         <div className="is-flex is-flex-direction-column mb-3">
           <div className="block">
             <h3 className="is-size-5 has-text-weight-semibold">Call us</h3>

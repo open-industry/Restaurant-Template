@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import './AddToCart.css';
 
-function AddToCart() {
+function AddToCart({ isAddCart }) {
   const [quantity, setQuantity] = useState(() => 1);
 
   const quantityRef = useRef();
@@ -19,7 +19,7 @@ function AddToCart() {
   };
 
   return (
-    <div className="add-to-cart has-background-warning">
+    <div className={`add-to-cart has-background-warning ${isAddCart ? '' : 'slide-out'}`}>
       <form className="field has-addons m-0" onSubmit={(e) => e.preventDefault()}>
         <div className="control">
           <button className="button is-danger" type="button" onClick={handleSubtractOnClick}>-</button>
