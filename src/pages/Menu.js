@@ -34,7 +34,7 @@ export default function Menu() {
       <div className="tile is-ancestor is-justify-content-center">
         <div className="tile is-parent is-flex is-8 is-vertical is-align-items-center">
           {menuData.items.map((item) => (
-            item.isAvailable ? (
+            item.isAvailable && (
               <MenuItem
                 image={imgSelector(item.name.toLowerCase())}
                 name={item.name}
@@ -45,25 +45,25 @@ export default function Menu() {
                 forceHover={false}
                 key={item.id}
               />
-            ) : null
+            )
           ))}
         </div>
       </div>
       <div className={`modal ${isAddCart ? 'is-active' : ''}`}>
         <div className="modal-background" />
         <div className="modal-content is-flex is-justify-content-center">
-          {itemFocus
-            && (
-              <MenuItem
-                image={imgSelector(itemFocus.name.toLowerCase())}
-                name={itemFocus.name}
-                price={`₳${itemFocus.price.toFixed(2)}`}
-                alt={itemFocus.alt}
-                toggleModalClick={() => toggleModalClick(itemFocus.id)}
-                toggleModalEnter={(e) => toggleModalEnter(e, itemFocus.id)}
-                forceHover
-              />
-            )}
+          {itemFocus && (
+            <MenuItem
+              image={imgSelector(itemFocus.name.toLowerCase())}
+              name={itemFocus.name}
+              price={`₳${itemFocus.price.toFixed(2)}`}
+              alt={itemFocus.alt}
+              toggleModalClick={() => toggleModalClick(itemFocus.id)}
+              toggleModalEnter={(e) => toggleModalEnter(e, itemFocus.id)}
+              forceHover
+            />
+          )}
+          {/* create style rules for AddToCart to slideup from bottom of viewport */}
           <AddToCart />
         </div>
         <button className="modal-close is-large" type="button" onClick={toggleModalClick} />
