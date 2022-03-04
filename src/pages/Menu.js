@@ -3,18 +3,30 @@ import AddToCart from '../components/AddToCart';
 import MenuItem from '../components/MenuItem';
 import imgSelector from '../img/imgSelector';
 
-/*
-  - fix click handlers for triggering modal
-  - add click handlers to images and and to modal background
-*/
-
 const menuData = require('../data/db.json');
 
 export default function Menu() {
   const [isAddCart, setIsAddCart] = useState(() => false);
+  const [itemFocus, setItemFocus] = useState(() => null);
 
-  const handleOnClick = () => {
+  const toggleModalClick = (id) => {
     setIsAddCart((prevState) => !prevState);
+    if (itemFocus) {
+      setItemFocus(() => null);
+    } else {
+      setItemFocus(() => menuData.items[id - 1]);
+    }
+  };
+
+  const toggleModalEnter = (e, id) => {
+    if (e.key === 'Enter') {
+      setIsAddCart((prevState) => !prevState);
+      if (itemFocus) {
+        setItemFocus(() => null);
+      } else {
+        setItemFocus(() => menuData.items[id - 1]);
+      }
+    }
   };
 
   return (
@@ -28,8 +40,10 @@ export default function Menu() {
                 name={item.name}
                 price={`₳${item.price.toFixed(2)}`}
                 alt={item.alt}
+                toggleModalClick={() => toggleModalClick(item.id)}
+                toggleModalEnter={(e) => toggleModalEnter(e, item.id)}
+                forceHover={false}
                 key={item.id}
-                onClick={handleOnClick}
               />
             ) : null
           ))}
@@ -38,10 +52,21 @@ export default function Menu() {
       <div className={`modal ${isAddCart ? 'is-active' : ''}`}>
         <div className="modal-background" />
         <div className="modal-content is-flex is-justify-content-center">
-          <MenuItem image={imgSelector('funny burger')} name="Funny Burger" price="₳1.00" alt="Funny Burger" />
+          {itemFocus
+            && (
+              <MenuItem
+                image={imgSelector(itemFocus.name.toLowerCase())}
+                name={itemFocus.name}
+                price={`₳${itemFocus.price.toFixed(2)}`}
+                alt={itemFocus.alt}
+                toggleModalClick={() => toggleModalClick(itemFocus.id)}
+                toggleModalEnter={(e) => toggleModalEnter(e, itemFocus.id)}
+                forceHover
+              />
+            )}
           <AddToCart />
         </div>
-        <button className="modal-close is-large" type="button" onClick={handleOnClick} />
+        <button className="modal-close is-large" type="button" onClick={toggleModalClick} />
       </div>
     </>
   );

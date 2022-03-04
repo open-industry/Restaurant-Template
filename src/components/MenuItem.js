@@ -1,9 +1,9 @@
 import React from 'react';
 
-function MenuItem({ image, name, price, alt }) {
+function MenuItem({ image, name, price, alt, toggleModalClick, toggleModalEnter, forceHover }) {
   return (
     <article className="tile is-child notification is-warning is-light p-5">
-      <div className="card">
+      <div className={`card ${forceHover ? 'hovered' : ''}`} onClick={toggleModalClick} onKeyPress={toggleModalEnter} role="button" tabIndex={0}>
         <div className="card-image has-text-centered">
           <img src={image} alt={alt} />
         </div>

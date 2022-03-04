@@ -8,7 +8,8 @@ iframe {
 }
 
 /* hover effect for menu items */
-div.card:hover {
+div.card:hover,
+.hovered {
   transform: scale(1.05);
   border-color: gold;
   box-shadow: 0 0 .5rem gold;
