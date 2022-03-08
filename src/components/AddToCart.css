@@ -11,7 +11,7 @@
   transition: bottom 200ms ease-in;
   border: 1px solid hsl(348, 86%, 43%);
   box-shadow: 0 0 .5rem hsl(348, 86%, 43%);
-  animation: slide-in 200ms ease-out;
+  animation: slide-in 350ms ease-out;
 }
 
 .slide-out {

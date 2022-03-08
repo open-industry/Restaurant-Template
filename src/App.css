@@ -29,6 +29,10 @@ div.message-body {
   box-shadow: none!important;
 }
 
+.is-justify-right-desktop {
+  justify-content: space-between;
+}
+
 .has-text-bgc {
   color: hsl(348, 86%, 43%);
 }
@@ -79,12 +83,16 @@ div.message-body {
   .img-container {
     width: 66%;
     height: 66%;
-  }  
+  }
+
+  .is-justify-right-desktop {
+    justify-content: flex-end;
+  }
 }
 
 @media (max-width: 399px) {
   .hero-body {
-    padding: 0!important;
+    padding: 1rem 0 0!important;
   }
 }
 
