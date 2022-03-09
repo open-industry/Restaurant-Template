@@ -1,14 +1,13 @@
 // sidebar component for mobile/touch devices, set as first child of main parent container
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { MdClose } from 'react-icons/md';
-import { useNavContext } from './navContext';
 import NavLinks from './NavLinks';
 import './Sidebar.css';
 
 function Sidebar() {
-  // location provided as context by NavLinks.js
-  const location = useNavContext();
+  const location = useLocation();
 
   // open/close sidebar
   const [sidebar, setSidebar] = useState(false);

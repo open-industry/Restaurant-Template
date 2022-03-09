@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-// import { IconContext } from 'react-icons';
 import { FaUtensils, FaPhoneAlt } from 'react-icons/fa';
 import { IoHomeSharp } from 'react-icons/io5';
 

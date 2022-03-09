@@ -1,28 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 // BrowserRouter in index.js
 import { Route, Routes } from 'react-router-dom';
 import { TiShoppingCart } from 'react-icons/ti';
 import Home from './pages/Home';
 import Menu from './pages/Menu';
 import Contact from './pages/Contact';
-import HorizontalNav from './components/HorizontalNav';
-import Sidebar from './components/Sidebar';
+import HorizontalNav from './components/nav/HorizontalNav';
+import Sidebar from './components/nav/Sidebar';
 import Footer from './components/Footer';
-import { LocationProvider } from './components/navContext';
+// import { LocationProvider } from './components/nav/navContext';
+import { CartProvider } from './components/cart/CartProvider';
 import './App.css';
 
 function App() {
-  const [cart, setCart] = useState([]);
-
-  const addItem = (item, qty) => {
-    const itemInCart = cart.find((cartItem) => cartItem.id === item.id);
-    if (itemInCart) {
-      itemInCart.qty += qty;
-    } else {
-      setCart((prevState) => [...prevState, { ...item, qty }]);
-    }
-  };
-
   return (
     <>
       <header className="hero has-text-centered has-background-danger-dark">
@@ -32,7 +22,7 @@ function App() {
         </div>
       </header>
       <main className="section has-background-danger-dark">
-        <LocationProvider>
+        <CartProvider>
           <div className="container is-flex is-align-items-center is-justify-right-desktop" style={{ position: 'initial' }}>
             <Sidebar />
             <button className="icon is-medium" type="button">
@@ -43,13 +33,13 @@ function App() {
             <div className="box">
               <HorizontalNav />
               <Routes>
-                <Route path="/menu" element={<Menu cart={cart} addToCart={addItem} />} />
+                <Route path="/menu" element={<Menu />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/" element={<Home />} />
               </Routes>
             </div>
           </div>
-        </LocationProvider>
+        </CartProvider>
       </main>
       <Footer />
     </>

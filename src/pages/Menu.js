@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import AddToCart from '../components/AddToCart';
+import AddToCart from '../components/cart/AddToCart';
 import MenuItem from '../components/MenuItem';
 import imgSelector from '../img/imgSelector';
 

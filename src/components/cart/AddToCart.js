@@ -1,7 +1,9 @@
 import React, { useState, useRef } from 'react';
+// import { useCartContext } from './CartProvider';
 import './AddToCart.css';
 
 function AddToCart({ isAddCart }) {
+  // const { cartContent, addItem } = useCartContext();
   const [quantity, setQuantity] = useState(() => 1);
 
   const quantityRef = useRef();
