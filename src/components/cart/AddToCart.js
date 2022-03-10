@@ -1,10 +1,22 @@
-import React, { useState, useRef } from 'react';
-// import { useCartContext } from './CartProvider';
+import React, { useState, useEffect, useRef } from 'react';
+import { useCartContext } from './CartProvider';
 import './AddToCart.css';
 
-function AddToCart({ isAddCart }) {
-  // const { cartContent, addItem } = useCartContext();
+const getFocusQty = (cart, item) => {
+  const newItemIndex = cart.findIndex((cartItem) => cartItem.item.id === item.id);
+  if (newItemIndex === -1) return 1;
+  return cart[newItemIndex].qty;
+};
+
+function AddToCart({ isAddCart, toggleModalClick, itemFocus }) {
+  const { cartContent, addItem } = useCartContext();
+
+  // const [quantity, setQuantity] = useState(itemFocus === null ? 1 : getFocusQty(cartContent, itemFocus));
   const [quantity, setQuantity] = useState(() => 1);
+
+  useEffect(() => {
+    if (isAddCart) setQuantity(() => getFocusQty(cartContent, itemFocus));
+  }, [isAddCart]);
 
   const quantityRef = useRef();
 
@@ -42,7 +54,17 @@ function AddToCart({ isAddCart }) {
           <button className="button is-danger" type="button" onClick={handleAddOnClick}>+</button>
         </div>
       </form>
-      <button className="button is-danger" style={{ minWidth: '12em', width: '20vw' }} type="button">Add to cart</button>
+      <button
+        className="button is-danger"
+        style={{ minWidth: '12em', width: '20vw' }}
+        type="button"
+        onClick={() => {
+          addItem(itemFocus, quantity);
+          toggleModalClick(itemFocus.id);
+        }}
+      >
+        Add to cart
+      </button>
     </div>
   );
 }

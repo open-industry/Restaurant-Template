@@ -27,7 +27,7 @@ export function CartProvider({ children }) {
       cartContent,
       addItem,
     };
-  });
+  }, [cart]);
 
   return (
     <CartContext.Provider value={cartModule}>

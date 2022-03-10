@@ -72,7 +72,7 @@ export default function Menu() {
               forceHover
             />
           )}
-          <AddToCart isAddCart={isAddCart} />
+          <AddToCart isAddCart={isAddCart} toggleModalClick={toggleModalClick} itemFocus={itemFocus} />
         </div>
         <button className="modal-close is-large" type="button" onClick={toggleModalClick} />
       </div>
