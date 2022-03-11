@@ -1,4 +1,7 @@
 import { useState, createContext, useContext, useMemo } from 'react';
+import CONSTANTS from '../../data/constants';
+
+const { MINQTY } = CONSTANTS;
 
 const CartContext = createContext();
 
@@ -18,9 +21,9 @@ export function CartProvider({ children }) {
       if (newItemIndex === -1) {
         tempCart.push({ item, qty });
       } else {
-        tempCart[newItemIndex].item.qty = qty;
+        tempCart[newItemIndex].qty = qty;
       }
-      setCart(() => [...tempCart]);
+      setCart(() => [...tempCart.filter((cartItem) => cartItem.qty > MINQTY)]);
     };
 
     return {

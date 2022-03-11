@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useCartContext } from './CartProvider';
+import CONSTANTS from '../../data/constants';
 import './AddToCart.css';
+
+const { MINQTY, MAXQTY } = CONSTANTS;
 
 const getFocusQty = (cart, item) => {
   const newItemIndex = cart.findIndex((cartItem) => cartItem.item.id === item.id);
-  if (newItemIndex === -1) return 1;
+  if (newItemIndex === -1) return MINQTY;
   return cart[newItemIndex].qty;
 };
 
@@ -12,7 +15,7 @@ function AddToCart({ isAddCart, toggleModalClick, itemFocus }) {
   const { cartContent, addItem } = useCartContext();
 
   // const [quantity, setQuantity] = useState(itemFocus === null ? 1 : getFocusQty(cartContent, itemFocus));
-  const [quantity, setQuantity] = useState(() => 1);
+  const [quantity, setQuantity] = useState(() => MINQTY);
 
   useEffect(() => {
     if (isAddCart) setQuantity(() => getFocusQty(cartContent, itemFocus));
@@ -44,8 +47,8 @@ function AddToCart({ isAddCart, toggleModalClick, itemFocus }) {
             style={{ width: '4ch', textAlign: 'center' }}
             ref={quantityRef}
             type="number"
-            min={1}
-            max={99}
+            min={MINQTY}
+            max={MAXQTY}
             value={quantity}
             onChange={handleOnChange}
           />
