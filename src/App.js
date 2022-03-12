@@ -32,7 +32,7 @@ function App() {
         <CartProvider>
           <div className="container is-flex is-align-items-center is-justify-right-desktop" style={{ position: 'initial' }}>
             <Sidebar />
-            <button className="icon is-medium" type="button" onClick={toggleShowCart}>
+            <button className="icon is-medium is-clickable" type="button" onClick={toggleShowCart}>
               <TiShoppingCart color="#f5f5f5" size="29px" />
             </button>
           </div>
