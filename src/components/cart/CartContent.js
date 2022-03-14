@@ -4,32 +4,36 @@ import { useCartContext } from './CartProvider';
 
 function CartContent({ isShowCart, toggleShowCart }) {
   const { cartContent } = useCartContext();
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    console.log('submit');
+  };
+
   return (
     <div className={`modal ${isShowCart ? 'is-active' : ''}`}>
       <div className="modal-background" />
       <div className="modal-content is-flex is-justify-content-center">
         <div className="box has-background-warning">
           {cartContent.length > 0 ? (
-            <>
-              <form onSubmit={(e) => e.preventDefault()}>
-                <table className="table is-fullwidth">
-                  <thead>
-                    <tr>
-                      <th><abbr>Qty</abbr></th>
-                      <th>Item</th>
-                      <th>Subtotal</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {cartContent.length > 0 && cartContent.map((cartItem) => (
-                      <CartEntry cartItem={cartItem} key={cartItem.item.id} />
-                    ))}
-                  </tbody>
-                </table>
-              </form>
-              <div className="is-flex is-justify-content-space-between px-3 mt-4">
-                <p>Total</p>
-                <p>
+            <form onSubmit={handleOnSubmit}>
+              <table className="table is-fullwidth" style={{ borderRadius: '8px', backgroundColor: '#fffaeb' }}>
+                <thead>
+                  <tr>
+                    <th><abbr>Qty</abbr></th>
+                    <th>Item</th>
+                    <th>Subtotal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {cartContent.length > 0 && cartContent.map((cartItem) => (
+                    <CartEntry cartItem={cartItem} key={cartItem.item.id} />
+                  ))}
+                </tbody>
+              </table>
+              <div className="is-flex is-justify-content-space-between px-3 mt-5">
+                <p className="has-text-weight-semibold">Total</p>
+                <p className="has-text-weight-semibold">
                   {`₳ ${cartContent.reduce(
                     (accumulator, current) => accumulator + current.item.price * current.qty,
                     0,
@@ -39,7 +43,7 @@ function CartContent({ isShowCart, toggleShowCart }) {
               <div className="control">
                 <button className="button is-danger" type="submit" style={{ width: '100%' }}>Proceed to Checkout</button>
               </div>
-            </>
+            </form>
           ) : (
             <div className="has-text-centered">
               <h1 className="title">Cart is empty</h1>
