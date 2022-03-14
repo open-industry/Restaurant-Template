@@ -47,7 +47,7 @@ export default function Menu() {
               <MenuItem
                 image={imgSelector(item.name.toLowerCase())}
                 name={item.name}
-                price={`₳${item.price.toFixed(2)}`}
+                price={`₳ ${item.price.toFixed(2)}`}
                 alt={item.alt}
                 toggleModalClick={() => toggleModalClick(item.id)}
                 toggleModalEnter={(e) => toggleModalEnter(e, item.id)}
