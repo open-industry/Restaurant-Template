@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import CartEntry from './CartEntry';
 import { useCartContext } from './CartProvider';
 
 function CartContent({ isShowCart, toggleShowCart }) {
+  const [invoice, setInvoice] = useState([]);
   const { cartContent } = useCartContext();
+
+  useEffect(() => {
+    const tempInvoice = cartContent.map((cartItem) => {
+      const itemInvoice = { ...cartItem, subtotal: Number((cartItem.item.price * cartItem.qty).toFixed(2)) };
+      return itemInvoice;
+    });
+
+    setInvoice(() => tempInvoice);
+  }, [cartContent]);
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
@@ -26,18 +36,18 @@ function CartContent({ isShowCart, toggleShowCart }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {cartContent.length > 0 && cartContent.map((cartItem) => (
-                    <CartEntry cartItem={cartItem} key={cartItem.item.id} />
+                  {cartContent.length > 0 && invoice.map((invoiceItem) => (
+                    <CartEntry invoiceItem={invoiceItem} key={invoiceItem.item.id} />
                   ))}
                 </tbody>
               </table>
               <div className="is-flex is-justify-content-space-between px-3 mt-5">
                 <p className="has-text-weight-semibold">Total</p>
                 <p className="has-text-weight-semibold">
-                  {`₳ ${cartContent.reduce(
-                    (accumulator, current) => accumulator + current.item.price * current.qty,
+                  {`₳ ${(invoice.reduce(
+                    (accumulator, current) => accumulator + current.subtotal,
                     0,
-                  ).toFixed(2)}`}
+                  ).toFixed(2)).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}`}
                 </p>
               </div>
               <div className="control">
@@ -46,7 +56,7 @@ function CartContent({ isShowCart, toggleShowCart }) {
             </form>
           ) : (
             <div className="has-text-centered">
-              <h1 className="title">Cart is empty</h1>
+              <h1 className="title has-text-warning-dark">Cart is empty</h1>
             </div>
           )}
         </div>
