@@ -14,7 +14,6 @@ const getFocusQty = (cart, item) => {
 function AddToCart({ isAddCart, toggleModalClick, itemFocus }) {
   const { cartContent, addItem } = useCartContext();
 
-  // const [quantity, setQuantity] = useState(itemFocus === null ? 1 : getFocusQty(cartContent, itemFocus));
   const [quantity, setQuantity] = useState(() => MINQTY);
 
   useEffect(() => {
@@ -35,21 +34,27 @@ function AddToCart({ isAddCart, toggleModalClick, itemFocus }) {
     setQuantity(() => Math.max(Number(e.target.min), Math.min(Number(e.target.max), Number(e.target.value))));
   };
 
+  const handleSubmit = (e, item, qty) => {
+    e.preventDefault();
+    addItem(item, qty);
+    toggleModalClick(item.id);
+  };
+
   return (
     <div className={`add-to-cart has-background-warning ${isAddCart ? '' : 'slide-out'}`}>
-      <form className="field has-addons m-0" onSubmit={(e) => e.preventDefault()}>
+      <form className="field has-addons m-0" onSubmit={(e) => handleSubmit(e, itemFocus, quantity)}>
         <div className="control">
           <button className="button is-danger" type="button" onClick={handleSubtractOnClick}>-</button>
         </div>
         <div className="control">
           <input
-            className="input"
+            className="input p-0"
             style={{ width: '4ch', textAlign: 'center' }}
             ref={quantityRef}
             type="number"
             min={MINQTY}
             max={MAXQTY}
-            value={quantity}
+            value={Number(quantity).toString()}
             onChange={handleOnChange}
           />
         </div>
@@ -57,17 +62,19 @@ function AddToCart({ isAddCart, toggleModalClick, itemFocus }) {
           <button className="button is-danger" type="button" onClick={handleAddOnClick}>+</button>
         </div>
       </form>
-      <button
-        className="button is-danger"
-        style={{ minWidth: '12em', width: '20vw' }}
-        type="button"
-        onClick={() => {
-          addItem(itemFocus, quantity);
-          toggleModalClick(itemFocus.id);
-        }}
-      >
-        Add to cart
-      </button>
+      <div className="control">
+        <button
+          className="button is-danger"
+          style={{ minWidth: '12em', width: '20vw' }}
+          type="submit"
+          onClick={() => {
+            addItem(itemFocus, quantity);
+            toggleModalClick(itemFocus.id);
+          }}
+        >
+          Add to cart
+        </button>
+      </div>
     </div>
   );
 }

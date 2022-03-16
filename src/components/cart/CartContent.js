@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import CartEntry from './CartEntry';
 import { useCartContext } from './CartProvider';
+import CONSTANTS from '../../data/constants';
+
+const { MINQTY, MAXQTY } = CONSTANTS;
 
 function CartContent({ isShowCart, toggleShowCart }) {
   const [invoice, setInvoice] = useState([]);
+
   const { cartContent } = useCartContext();
 
   useEffect(() => {
@@ -14,6 +18,37 @@ function CartContent({ isShowCart, toggleShowCart }) {
 
     setInvoice(() => tempInvoice);
   }, [cartContent]);
+
+  const increment = (index) => {
+    setInvoice((prevState) => {
+      const tempInvoice = [...prevState];
+      tempInvoice[index].qty = Math.max(MINQTY, Math.min(MAXQTY, tempInvoice[index].qty + 1));
+      tempInvoice[index].subtotal = Number((tempInvoice[index].item.price * tempInvoice[index].qty).toFixed(2));
+      return tempInvoice;
+    });
+  };
+
+  const decrement = (index) => {
+    setInvoice((prevState) => {
+      const tempInvoice = [...prevState];
+      tempInvoice[index].qty = Math.max(MINQTY, Math.min(MAXQTY, tempInvoice[index].qty - 1));
+      tempInvoice[index].subtotal = Number((tempInvoice[index].item.price * tempInvoice[index].qty).toFixed(2));
+      return tempInvoice;
+    });
+  };
+
+  const handleEntryOnChange = (index) => {
+    const inputOnChange = (e) => {
+      setInvoice((prevState) => {
+        const tempInvoice = [...prevState];
+        tempInvoice[index].qty = Math.max(MINQTY, Math.min(MAXQTY, Number(e.target.value)));
+        tempInvoice[index].subtotal = Number((tempInvoice[index].item.price * tempInvoice[index].qty).toFixed(2));
+        return tempInvoice;
+      });
+    };
+
+    return inputOnChange;
+  };
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
@@ -36,18 +71,24 @@ function CartContent({ isShowCart, toggleShowCart }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {cartContent.length > 0 && invoice.map((invoiceItem) => (
-                    <CartEntry invoiceItem={invoiceItem} key={invoiceItem.item.id} />
+                  {cartContent.length > 0 && invoice.map((invoiceItem, index) => (
+                    <CartEntry
+                      invoiceItem={invoiceItem}
+                      increment={() => increment(index)}
+                      decrement={() => decrement(index)}
+                      handleEntryOnChange={handleEntryOnChange(index)}
+                      key={invoiceItem.item.id}
+                    />
                   ))}
                 </tbody>
               </table>
               <div className="is-flex is-justify-content-space-between px-3 mt-5">
-                <p className="has-text-weight-semibold">Total</p>
-                <p className="has-text-weight-semibold">
+                <p className="is-size-5 has-text-weight-semibold">Total</p>
+                <p className="is-size-5 has-text-weight-semibold">
                   {`₳ ${(invoice.reduce(
                     (accumulator, current) => accumulator + current.subtotal,
                     0,
-                  ).toFixed(2)).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}`}
+                  ).toFixed(2)).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}`}
                 </p>
               </div>
               <div className="control">
