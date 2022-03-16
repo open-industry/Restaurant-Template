@@ -31,7 +31,7 @@ function AddToCart({ isAddCart, toggleModalClick, itemFocus }) {
   };
 
   const handleOnChange = (e) => {
-    setQuantity(() => Math.max(Number(e.target.min), Math.min(Number(e.target.max), Number(e.target.value))));
+    setQuantity(() => Math.max(e.target.min, Math.min(e.target.max, e.target.value)));
   };
 
   const handleSubmit = (e, item, qty) => {

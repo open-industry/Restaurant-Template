@@ -61,40 +61,43 @@ function CartContent({ isShowCart, toggleShowCart }) {
       <div className="modal-content is-flex is-justify-content-center">
         <div className="box has-background-warning">
           {cartContent.length > 0 ? (
-            <form onSubmit={handleOnSubmit}>
-              <table className="table is-fullwidth" style={{ borderRadius: '8px', backgroundColor: '#fffaeb' }}>
-                <thead>
-                  <tr>
-                    <th><abbr>Qty</abbr></th>
-                    <th>Item</th>
-                    <th>Subtotal</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {cartContent.length > 0 && invoice.map((invoiceItem, index) => (
-                    <CartEntry
-                      invoiceItem={invoiceItem}
-                      increment={() => increment(index)}
-                      decrement={() => decrement(index)}
-                      handleEntryOnChange={handleEntryOnChange(index)}
-                      key={invoiceItem.item.id}
-                    />
-                  ))}
-                </tbody>
-              </table>
-              <div className="is-flex is-justify-content-space-between px-3 mt-5">
-                <p className="is-size-5 has-text-weight-semibold">Total</p>
-                <p className="is-size-5 has-text-weight-semibold">
-                  {`₳ ${(invoice.reduce(
-                    (accumulator, current) => accumulator + current.subtotal,
-                    0,
-                  ).toFixed(2)).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}`}
-                </p>
-              </div>
-              <div className="control">
-                <button className="button is-danger" type="submit" style={{ width: '100%' }}>Proceed to Checkout</button>
-              </div>
-            </form>
+            <>
+              <h1 className="title is-size-4">Cart</h1>
+              <form onSubmit={handleOnSubmit}>
+                <table className="table is-fullwidth" style={{ borderRadius: '8px', backgroundColor: '#fffaeb' }}>
+                  <thead>
+                    <tr>
+                      <th><abbr>Qty</abbr></th>
+                      <th>Item</th>
+                      <th>Subtotal</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {cartContent.length > 0 && invoice.map((invoiceItem, index) => (
+                      <CartEntry
+                        invoiceItem={invoiceItem}
+                        increment={() => increment(index)}
+                        decrement={() => decrement(index)}
+                        handleEntryOnChange={handleEntryOnChange(index)}
+                        key={invoiceItem.item.id}
+                      />
+                    ))}
+                  </tbody>
+                </table>
+                <div className="is-flex is-justify-content-space-between px-3 mt-5">
+                  <p className="is-size-5 has-text-weight-semibold">Total</p>
+                  <p className="is-size-5 has-text-weight-semibold">
+                    {`₳ ${(invoice.reduce(
+                      (accumulator, current) => accumulator + current.subtotal,
+                      0,
+                    ).toFixed(2)).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}`}
+                  </p>
+                </div>
+                <div className="control">
+                  <button className="button is-danger" type="submit" style={{ width: '100%' }}>Proceed to Checkout</button>
+                </div>
+              </form>
+            </>
           ) : (
             <div className="has-text-centered">
               <h1 className="title has-text-warning-dark">Cart is empty</h1>
