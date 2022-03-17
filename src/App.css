@@ -37,6 +37,22 @@ div.message-body {
   color: hsl(348, 86%, 43%);
 }
 
+/* cart content count badge for <i> element of cart button*/
+.badge:after {
+  content: attr(value);
+  font-family: 'Kanit', sans-serif!important;
+  color: hsl(348, 86%, 43%);
+  min-width: 19px;
+  font-size: .8rem;
+  background: #ffe08a;
+  border-radius: 50%;
+  padding: 0 5px;
+  position: relative;
+  left: -8px;
+  top: -10px;
+  opacity: 0.9;
+}
+
 .modal-background {
   background-color: rgba(10,10,10,.70)!important;
 }

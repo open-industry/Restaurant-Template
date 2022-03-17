@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // BrowserRouter in index.js
 import { Route, Routes } from 'react-router-dom';
 import { TiShoppingCart } from 'react-icons/ti';
@@ -9,15 +9,28 @@ import HorizontalNav from './components/nav/HorizontalNav';
 import Sidebar from './components/nav/Sidebar';
 import Footer from './components/Footer';
 import CartContent from './components/cart/CartContent';
-// import { LocationProvider } from './components/nav/navContext';
-import { CartProvider } from './components/cart/CartProvider';
+import { useCartContext } from './components/cart/CartProvider';
 import './App.css';
 
 function App() {
   const [isShowCart, setIsShowCart] = useState(() => false);
 
+  // open/close sidebar
+  const [sidebar, setSidebar] = useState(() => false);
+
+  useEffect(() => {
+    if (isShowCart) setSidebar(() => false);
+  }, [isShowCart]);
+
+  const { cartContent } = useCartContext();
+
   const toggleShowCart = () => {
     setIsShowCart((prevState) => !prevState);
+  };
+
+  // toggle sidebar for onClick of hamburger icon
+  const toggleSidebar = () => {
+    setSidebar((prevState) => !prevState);
   };
 
   return (
@@ -29,25 +42,23 @@ function App() {
         </div>
       </header>
       <main className="section has-background-danger-dark">
-        <CartProvider>
-          <div className="container is-flex is-align-items-center is-justify-right-desktop" style={{ position: 'initial' }}>
-            <Sidebar />
-            <button className="icon is-medium is-clickable" type="button" onClick={toggleShowCart}>
-              <TiShoppingCart color="#f5f5f5" size="29px" />
-            </button>
+        <div className="container is-flex is-align-items-center is-justify-right-desktop" style={{ position: 'initial' }}>
+          <Sidebar onClick={toggleSidebar} sidebar={sidebar} />
+          <button className="icon is-medium is-clickable badge" value={cartContent.length} type="button" onClick={toggleShowCart}>
+            <i><TiShoppingCart color="#f5f5f5" size="29px" /></i>
+          </button>
+        </div>
+        <div className="container">
+          <div className="box">
+            <HorizontalNav />
+            <CartContent isShowCart={isShowCart} toggleShowCart={toggleShowCart} />
+            <Routes>
+              <Route path="/menu" element={<Menu isShowCart={isShowCart} />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/" element={<Home />} />
+            </Routes>
           </div>
-          <div className="container">
-            <div className="box">
-              <HorizontalNav />
-              <CartContent isShowCart={isShowCart} toggleShowCart={toggleShowCart} />
-              <Routes>
-                <Route path="/menu" element={<Menu />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/" element={<Home />} />
-              </Routes>
-            </div>
-          </div>
-        </CartProvider>
+        </div>
       </main>
       <Footer />
     </>
