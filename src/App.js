@@ -22,6 +22,17 @@ function App() {
     if (isShowCart) setSidebar(() => false);
   }, [isShowCart]);
 
+  useEffect(() => {
+    const modals = document.querySelectorAll('.modal');
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        modals.forEach((modal) => {
+          if (modal.classList.contains('is-active')) modal.classList.remove('is-active');
+        });
+      }
+    });
+  }, []);
+
   const { cartContent } = useCartContext();
 
   const toggleShowCart = () => {
@@ -31,6 +42,10 @@ function App() {
   // toggle sidebar for onClick of hamburger icon
   const toggleSidebar = () => {
     setSidebar((prevState) => !prevState);
+  };
+
+  const closeSidebar = () => {
+    setSidebar(() => false);
   };
 
   return (
@@ -53,7 +68,7 @@ function App() {
             <HorizontalNav />
             <CartContent isShowCart={isShowCart} toggleShowCart={toggleShowCart} />
             <Routes>
-              <Route path="/menu" element={<Menu isShowCart={isShowCart} />} />
+              <Route path="/menu" element={<Menu closeSidebar={closeSidebar} />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/" element={<Home />} />
             </Routes>

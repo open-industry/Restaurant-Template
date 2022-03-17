@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect } from 'react';
 import AddToCart from '../components/cart/AddToCart';
 import MenuItem from '../components/MenuItem';
@@ -5,7 +6,7 @@ import imgSelector from '../img/imgSelector';
 
 const menuData = require('../data/db.json');
 
-export default function Menu() {
+export default function Menu({ closeSidebar }) {
   const [isAddCart, setIsAddCart] = useState(() => false);
   const [itemFocus, setItemFocus] = useState(() => null);
   const [isModal, setIsModal] = useState(() => false);
@@ -13,6 +14,7 @@ export default function Menu() {
   useEffect(() => {
     if (isAddCart) {
       setIsModal(() => true);
+      closeSidebar();
     } else {
       setTimeout(() => setIsModal(() => false), 300);
     }
@@ -38,6 +40,11 @@ export default function Menu() {
     }
   };
 
+  const closeModal = () => {
+    setIsAddCart(() => false);
+    setItemFocus(() => null);
+  };
+
   return (
     <>
       <div className="tile is-ancestor is-justify-content-center">
@@ -53,13 +60,14 @@ export default function Menu() {
                 toggleModalEnter={(e) => toggleModalEnter(e, item.id)}
                 forceHover={false}
                 key={item.id}
+                tabIndex={isModal ? -1 : 0}
               />
             )
           ))}
         </div>
       </div>
       <div className={`modal ${isModal ? 'is-active' : ''}`}>
-        <div className="modal-background" />
+        <div className="modal-background" onClick={closeModal} role="button" tabIndex={0} />
         <div className="modal-content is-flex is-justify-content-center">
           {itemFocus && (
             <MenuItem

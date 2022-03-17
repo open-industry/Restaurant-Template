@@ -18,8 +18,8 @@ function CartEntry({ invoiceItem, increment, decrement, handleEntryOnChange }) {
             onChange={handleEntryOnChange}
           />
           <div className="is-flex is-flex-direction-column">
-            <button className="spin-button is-clickable" type="button" onClick={increment}>˄</button>
-            <button className="spin-button is-clickable" type="button" onClick={decrement}>˅</button>
+            <button className="spin-button is-clickable" type="button" onClick={increment} role="spinbutton">˄</button>
+            <button className="spin-button is-clickable" type="button" onClick={decrement} role="spinbutton">˅</button>
           </div>
         </div>
       </td>
