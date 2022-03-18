@@ -1,12 +1,18 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+import React, { useState, useEffect, useRef } from 'react';
 import CartEntry from './CartEntry';
 import { useCartContext } from './CartProvider';
 import CONSTANTS from '../../data/constants';
 
+// create focus trap and event listeners for modal
+
 const { MINQTY, MAXQTY } = CONSTANTS;
 
-function CartContent({ isShowCart, toggleShowCart }) {
+function CartContent({ isShowCart, toggleShowCart, hideCart }) {
   const [invoice, setInvoice] = useState([]);
+
+  const modalRef = useRef();
 
   const { cartContent } = useCartContext();
 
@@ -56,8 +62,8 @@ function CartContent({ isShowCart, toggleShowCart }) {
   };
 
   return (
-    <div className={`modal ${isShowCart ? 'is-active' : ''}`}>
-      <div className="modal-background" />
+    <div className={`modal ${isShowCart ? 'is-active' : ''}`} ref={modalRef}>
+      <div className="modal-background" onClick={hideCart} />
       <div className="modal-content is-flex is-justify-content-center">
         <div className="box has-background-warning">
           {cartContent.length > 0 ? (

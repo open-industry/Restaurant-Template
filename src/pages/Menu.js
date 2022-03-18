@@ -1,8 +1,10 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState, useEffect } from 'react';
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+import React, { useState, useEffect, useRef } from 'react';
 import AddToCart from '../components/cart/AddToCart';
 import MenuItem from '../components/MenuItem';
 import imgSelector from '../img/imgSelector';
+import focusTrap from '../components/focusTrap';
 
 const menuData = require('../data/db.json');
 
@@ -11,11 +13,26 @@ export default function Menu({ closeSidebar }) {
   const [itemFocus, setItemFocus] = useState(() => null);
   const [isModal, setIsModal] = useState(() => false);
 
+  const modalRef = useRef();
+
+  const closeModal = () => {
+    setIsAddCart(() => false);
+    setItemFocus(() => null);
+  };
+
+  const handleKeydown = (e) => {
+    if (e.key === 'Escape') closeModal();
+
+    else if (e.key === 'Tab') focusTrap(e, modalRef.current, e.target);
+  };
+
   useEffect(() => {
     if (isAddCart) {
+      document.addEventListener('keydown', handleKeydown);
       setIsModal(() => true);
       closeSidebar();
     } else {
+      document.removeEventListener('keydown', handleKeydown);
       setTimeout(() => setIsModal(() => false), 300);
     }
   }, [isAddCart]);
@@ -40,11 +57,6 @@ export default function Menu({ closeSidebar }) {
     }
   };
 
-  const closeModal = () => {
-    setIsAddCart(() => false);
-    setItemFocus(() => null);
-  };
-
   return (
     <>
       <div className="tile is-ancestor is-justify-content-center">
@@ -66,8 +78,8 @@ export default function Menu({ closeSidebar }) {
           ))}
         </div>
       </div>
-      <div className={`modal ${isModal ? 'is-active' : ''}`}>
-        <div className="modal-background" onClick={closeModal} role="button" tabIndex={0} />
+      <div className={`modal ${isModal ? 'is-active' : ''}`} ref={modalRef}>
+        <div className="modal-background" onClick={closeModal} />
         <div className="modal-content is-flex is-justify-content-center">
           {itemFocus && (
             <MenuItem
