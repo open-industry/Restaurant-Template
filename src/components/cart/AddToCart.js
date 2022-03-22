@@ -44,7 +44,7 @@ function AddToCart({ isAddCart, toggleModalClick, itemFocus }) {
     <div className={`add-to-cart has-background-warning ${isAddCart ? '' : 'slide-out'}`}>
       <form className="field has-addons m-0" onSubmit={(e) => handleSubmit(e, itemFocus, quantity)}>
         <div className="control">
-          <button className="button is-danger" type="button" onClick={handleSubtractOnClick}>-</button>
+          <button className="button is-danger" type="button" onClick={handleSubtractOnClick} aria-label="decrement">-</button>
         </div>
         <div className="control">
           <input
@@ -56,10 +56,11 @@ function AddToCart({ isAddCart, toggleModalClick, itemFocus }) {
             max={MAXQTY}
             value={Number(quantity).toString()}
             onChange={handleOnChange}
+            aria-label="quantity"
           />
         </div>
         <div className="control">
-          <button className="button is-danger" type="button" onClick={handleAddOnClick}>+</button>
+          <button className="button is-danger" type="button" onClick={handleAddOnClick} aria-label="increment">+</button>
         </div>
       </form>
       <div className="control">
@@ -71,6 +72,7 @@ function AddToCart({ isAddCart, toggleModalClick, itemFocus }) {
             addItem(itemFocus, quantity);
             toggleModalClick(itemFocus.id);
           }}
+          aria-label="add to cart"
         >
           Add to cart
         </button>

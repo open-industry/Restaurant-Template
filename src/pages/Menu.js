@@ -93,11 +93,12 @@ export default function Menu({ closeSidebar }) {
               toggleModalClick={() => toggleModalClick(itemFocus.id)}
               toggleModalEnter={(e) => toggleModalEnter(e, itemFocus.id)}
               forceHover
+              aria-label={itemFocus.name}
             />
           )}
           <AddToCart isAddCart={isAddCart} toggleModalClick={toggleModalClick} itemFocus={itemFocus} />
         </div>
-        <button className="modal-close is-large" type="button" onClick={toggleModalClick} />
+        <button className="modal-close is-large" type="button" onClick={toggleModalClick} aria-label="close modal" />
       </div>
     </>
   );

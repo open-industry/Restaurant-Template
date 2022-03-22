@@ -21,7 +21,6 @@ export default function focusTrap(e, container) {
   const isOutsideContainer = !container.contains(e.target);
 
   if (focusData.focusIndex >= focusData.focusables.length - 1 || isOutsideContainer) {
-  // if (focusData.focusIndex >= focusData.focusables.length - 1) {
     e.preventDefault();
     focusData.focusables[0].focus();
   }

@@ -39,6 +39,7 @@ export default function NavLinks({ location }) {
             // callback function of NavLink component checks isActive prop and adds className
             className={({ isActive }) => (isActive ? 'active-font' : 'has-text-warning-dark')}
             to={linkPathTo(item)}
+            aria-label={item}
           >
             <div className="icon-text is-align-items-center">
               {/* compare NavLink path to current location for icon className  */}
