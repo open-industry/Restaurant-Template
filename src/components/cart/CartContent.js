@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState, useEffect, useRef } from 'react';
 import CartEntry from './CartEntry';
+import focusTrap from '../focusTrap';
 import { useCartContext } from './CartProvider';
 import CONSTANTS from '../../data/constants';
 
@@ -15,6 +16,22 @@ function CartContent({ isShowCart, toggleShowCart, hideCart }) {
   const modalRef = useRef();
 
   const { cartContent } = useCartContext();
+
+  const handleKeydown = (e) => {
+    if (e.key === 'Escape') hideCart();
+
+    else if (e.key === 'Tab') focusTrap(e, modalRef.current);
+  };
+
+  useEffect(() => {
+    if (isShowCart) {
+      document.addEventListener('keydown', handleKeydown);
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeydown);
+    };
+  }, [isShowCart]);
 
   useEffect(() => {
     const tempInvoice = cartContent.map((cartItem) => {

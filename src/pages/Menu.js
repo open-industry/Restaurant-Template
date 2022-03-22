@@ -23,7 +23,7 @@ export default function Menu({ closeSidebar }) {
   const handleKeydown = (e) => {
     if (e.key === 'Escape') closeModal();
 
-    else if (e.key === 'Tab') focusTrap(e, modalRef.current, e.target);
+    else if (e.key === 'Tab') focusTrap(e, modalRef.current);
   };
 
   useEffect(() => {
@@ -32,9 +32,12 @@ export default function Menu({ closeSidebar }) {
       setIsModal(() => true);
       closeSidebar();
     } else {
-      document.removeEventListener('keydown', handleKeydown);
       setTimeout(() => setIsModal(() => false), 300);
     }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeydown);
+    };
   }, [isAddCart]);
 
   const toggleModalClick = (id) => {

@@ -7,17 +7,19 @@ function CartEntry({ invoiceItem, increment, decrement, handleEntryOnChange }) {
   return (
     <tr>
       <td style={{ verticalAlign: 'middle', textAlign: 'center' }}>
-        <div className="control is-flex is-flex-direction-row">
-          <input
-            className="input p-0 has-text-centered"
-            style={{ width: '4ch', textAlign: 'end', borderRadius: '3px 0 0 3px' }}
-            type="number"
-            min={MINQTY}
-            max={MAXQTY}
-            value={Number(invoiceItem.qty).toString()}
-            onChange={handleEntryOnChange}
-          />
-          <div className="is-flex is-flex-direction-column">
+        <div className="is-flex is-flex-direction-row">
+          <div className="control">
+            <input
+              className="input p-0 has-text-centered"
+              style={{ width: '4ch', textAlign: 'end', borderRadius: '3px 0 0 3px' }}
+              type="number"
+              min={MINQTY}
+              max={MAXQTY}
+              value={Number(invoiceItem.qty).toString()}
+              onChange={handleEntryOnChange}
+            />
+          </div>
+          <div className="control is-flex is-flex-direction-column">
             <button className="spin-button is-clickable" type="button" onClick={increment} role="spinbutton">˄</button>
             <button className="spin-button is-clickable" type="button" onClick={decrement} role="spinbutton">˅</button>
           </div>
