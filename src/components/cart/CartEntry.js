@@ -17,11 +17,12 @@ function CartEntry({ invoiceItem, increment, decrement, handleEntryOnChange }) {
               max={MAXQTY}
               value={Number(invoiceItem.qty).toString()}
               onChange={handleEntryOnChange}
+              aria-label="quantity"
             />
           </div>
           <div className="control is-flex is-flex-direction-column">
-            <button className="spin-button is-clickable" type="button" onClick={increment} role="spinbutton">˄</button>
-            <button className="spin-button is-clickable" type="button" onClick={decrement} role="spinbutton">˅</button>
+            <button className="spin-button is-clickable" type="button" onClick={increment} role="spinbutton" aria-label={`increment ${invoiceItem.item.name} quantity`}>˄</button>
+            <button className="spin-button is-clickable" type="button" onClick={decrement} role="spinbutton" aria-label={`decrement ${invoiceItem.item.name} quantity`}>˅</button>
           </div>
         </div>
       </td>

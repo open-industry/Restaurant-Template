@@ -93,7 +93,6 @@ export default function Menu({ closeSidebar }) {
               toggleModalClick={() => toggleModalClick(itemFocus.id)}
               toggleModalEnter={(e) => toggleModalEnter(e, itemFocus.id)}
               forceHover
-              aria-label={itemFocus.name}
             />
           )}
           <AddToCart isAddCart={isAddCart} toggleModalClick={toggleModalClick} itemFocus={itemFocus} />

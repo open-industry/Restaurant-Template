@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import CartEntry from './CartEntry';
 import focusTrap from '../focusTrap';
 import { useCartContext } from './CartProvider';
@@ -15,7 +16,9 @@ function CartContent({ isShowCart, toggleShowCart, hideCart }) {
 
   const modalRef = useRef();
 
-  const { cartContent } = useCartContext();
+  const navigate = useNavigate();
+
+  const { cartContent, updateCart } = useCartContext();
 
   const handleKeydown = (e) => {
     if (e.key === 'Escape') hideCart();
@@ -75,7 +78,9 @@ function CartContent({ isShowCart, toggleShowCart, hideCart }) {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    console.log('submit');
+    updateCart(invoice);
+    hideCart();
+    navigate('/checkout');
   };
 
   return (
@@ -117,7 +122,7 @@ function CartContent({ isShowCart, toggleShowCart, hideCart }) {
                   </p>
                 </div>
                 <div className="control">
-                  <button className="button is-danger" type="submit" style={{ width: '100%' }}>Proceed to Checkout</button>
+                  <button className="button is-danger" type="submit" style={{ width: '100%' }} aria-label="proceed to checkout">Proceed to Checkout</button>
                 </div>
               </form>
             </>
@@ -128,7 +133,7 @@ function CartContent({ isShowCart, toggleShowCart, hideCart }) {
           )}
         </div>
       </div>
-      <button className="modal-close is-large" type="button" onClick={toggleShowCart} />
+      <button className="modal-close is-large" type="button" onClick={toggleShowCart} aria-label="close modal" />
     </div>
   );
 }

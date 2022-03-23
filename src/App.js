@@ -5,6 +5,7 @@ import { TiShoppingCart } from 'react-icons/ti';
 import Home from './pages/Home';
 import Menu from './pages/Menu';
 import Contact from './pages/Contact';
+import Checkout from './pages/Checkout';
 import HorizontalNav from './components/nav/HorizontalNav';
 import Sidebar from './components/nav/Sidebar';
 import Footer from './components/Footer';
@@ -63,6 +64,7 @@ function App() {
             <Routes>
               <Route path="/menu" element={<Menu closeSidebar={closeSidebar} />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/checkout" element={<Checkout />} />
               <Route path="/" element={<Home />} />
             </Routes>
           </div>

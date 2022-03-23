@@ -26,9 +26,19 @@ export function CartProvider({ children }) {
       setCart(() => [...tempCart.filter((cartItem) => cartItem.qty > MINQTY)]);
     };
 
+    const updateCart = (invoice) => {
+      const normalizeInvoice = invoice.map((invoiceItem) => {
+        const { item, qty } = invoiceItem;
+        return { item, qty };
+      });
+
+      setCart(() => normalizeInvoice.filter((cartItem) => cartItem.qty > MINQTY));
+    };
+
     return {
       cartContent,
       addItem,
+      updateCart,
     };
   }, [cart]);
 
