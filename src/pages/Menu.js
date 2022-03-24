@@ -35,9 +35,7 @@ export default function Menu({ closeSidebar }) {
       setTimeout(() => setIsModal(() => false), 300);
     }
 
-    return () => {
-      document.removeEventListener('keydown', handleKeydown);
-    };
+    return () => document.removeEventListener('keydown', handleKeydown);
   }, [isAddCart]);
 
   const toggleModalClick = (id) => {

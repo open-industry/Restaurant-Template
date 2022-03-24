@@ -27,13 +27,9 @@ function CartContent({ isShowCart, toggleShowCart, hideCart }) {
   };
 
   useEffect(() => {
-    if (isShowCart) {
-      document.addEventListener('keydown', handleKeydown);
-    }
+    if (isShowCart) document.addEventListener('keydown', handleKeydown);
 
-    return () => {
-      document.removeEventListener('keydown', handleKeydown);
-    };
+    return () => document.removeEventListener('keydown', handleKeydown);
   }, [isShowCart]);
 
   useEffect(() => {

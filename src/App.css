@@ -66,6 +66,35 @@ div.message-body {
   gap: .5rem;
 }
 
+.copy-notification {
+  display: none!important;
+  opacity: 0%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  max-width: fit-content;
+  animation: fade-in 1800ms ease-in;
+}
+
+.copy-notification.is-active {
+  display: flex!important;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0%;
+  }
+  25% {
+    opacity: 100%;
+  }
+  75% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0%;
+  }
+}
+
 .modal-background {
   background-color: rgba(10,10,10,.70)!important;
 }

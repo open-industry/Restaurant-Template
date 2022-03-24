@@ -4,6 +4,7 @@ import drink from './drink_nobg.png';
 import steak from './steak_nobg.png';
 import btc from './btc.png';
 import ada from './ada.png';
+import usdt from './usdt.png';
 
 export default function imgSelector(str) {
   switch (str) {
@@ -19,6 +20,8 @@ export default function imgSelector(str) {
       return btc;
     case 'cardano':
       return ada;
+    case 'tether':
+      return usdt;
     default:
       return null;
   }
