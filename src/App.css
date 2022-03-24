@@ -15,6 +15,15 @@ div.card:hover,
   box-shadow: 0 0 .5rem gold;
 }
 
+div.card.no-scale:hover {
+  transform: none;
+}
+
+div.card.no-scale {
+  border-color: gold;
+  box-shadow: 0 0 .5rem gold;
+}
+
 div.message-body {
   border-width: 3px!important;
 }
@@ -51,6 +60,10 @@ div.message-body {
   left: -8px;
   top: -10px;
   opacity: 0.9;
+}
+
+.donate-container {
+  gap: .5rem;
 }
 
 .modal-background {
@@ -116,7 +129,7 @@ div.message-body {
   keeps footer at the bottom of page
   requires div#root min-height 100vh
 */
-div#root > footer {
+#root > footer {
   position: sticky;
   top: 100vh;
   background-color: transparent;
