@@ -35,10 +35,13 @@ export function CartProvider({ children }) {
       setCart(() => normalizeInvoice.filter((cartItem) => cartItem.qty > MINQTY));
     };
 
+    const clearCart = () => setCart(() => []);
+
     return {
       cartContent,
       addItem,
       updateCart,
+      clearCart,
     };
   }, [cart]);
 

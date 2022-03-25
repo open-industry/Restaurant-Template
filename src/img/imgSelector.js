@@ -5,6 +5,7 @@ import steak from './steak_nobg.png';
 import btc from './btc.png';
 import ada from './ada.png';
 import usdt from './usdt.png';
+import bnb from './bnb.png';
 
 export default function imgSelector(str) {
   switch (str) {
@@ -22,6 +23,8 @@ export default function imgSelector(str) {
       return ada;
     case 'tether':
       return usdt;
+    case 'bnb':
+      return bnb;
     default:
       return null;
   }

@@ -28,5 +28,39 @@
       "alt": "soda",
       "isAvailable": true
     }
+  ],
+  "cryptos": [
+    {
+      "id": 1,
+      "name": "bitcoin",
+      "symbol": "BTC",
+      "label": "BTC (SegWit)",
+      "address": "bc1qgwluzwpe8t39fqqylsxvd0lp6d0wyw2md2r7nm",
+      "isAvailable": true
+    },
+    {
+      "id": 2,
+      "name": "cardano",
+      "symbol": "ADA",
+      "label": "ADA",
+      "address": "DdzFFzCqrhssNBn9HMyQudRhP1nN2NEheFz57BKipZhBS9RiCFxb31U7KgjFioCyVG33VcAsVXZwwYfG6DSYKs46tN3M8SMkph1jYmfE",
+      "isAvailable": true
+    },
+    {
+      "id": 3,
+      "name": "tether",
+      "symbol": "USDT",
+      "label": "USDT (TRC20)",
+      "address": "TVf2rDXhYsNXngENTpZCaMBWFaRujpZTpG",
+      "isAvailable": true
+    },
+    {
+      "id": 4,
+      "name": "bnb",
+      "symbol": "BNB",
+      "label": "BNB (BEP20)",
+      "address": "0x403f3872b17c5780daa7c614c89bc0ea4c6205be",
+      "isAvailable": true
+    }
   ]
 }

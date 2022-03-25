@@ -73,7 +73,7 @@ div.message-body {
   left: 0;
   right: 0;
   max-width: fit-content;
-  animation: fade-in 1800ms ease-in;
+  animation: fade-in 1800ms ease-out;
 }
 
 .copy-notification.is-active {
@@ -97,6 +97,17 @@ div.message-body {
 
 .modal-background {
   background-color: rgba(10,10,10,.70)!important;
+}
+
+.modal {
+ animation: fade 200ms ease-in-out forwards;
+ opacity: 0;
+}
+
+@keyframes fade {
+  100% {
+    opacity: 1;
+  }
 }
 
 /* if display is less than or equal to 1023px (less than desktop) */

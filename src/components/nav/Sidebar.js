@@ -29,7 +29,7 @@ function Sidebar({ onClick, sidebar }) {
   return (
     <>
       {/* hamburger icon toggles overlay */}
-      <button className="icon is-size-4 has-text-white-ter is-hidden-desktop" type="button" onClick={onClick} aria-label={sidebar ? 'close sidebar' : 'open sidebar'}>
+      <button className="icon is-size-4 has-text-white-ter is-hidden-desktop is-clickable" type="button" onClick={onClick} aria-label={sidebar ? 'close sidebar' : 'open sidebar'}>
         {sidebar ? <i><MdClose /></i> : <i><GiHamburgerMenu /></i>}
       </button>
       {/* sidebar overlay menu */}

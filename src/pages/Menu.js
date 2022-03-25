@@ -6,7 +6,7 @@ import MenuItem from '../components/MenuItem';
 import imgSelector from '../img/imgSelector';
 import focusTrap from '../components/focusTrap';
 
-const menuData = require('../data/db.json');
+const { items: menuItems } = require('../data/db.json');
 
 export default function Menu({ closeSidebar }) {
   const [isAddCart, setIsAddCart] = useState(() => false);
@@ -43,7 +43,7 @@ export default function Menu({ closeSidebar }) {
     if (itemFocus) {
       setItemFocus(() => null);
     } else {
-      setItemFocus(() => menuData.items[id - 1]);
+      setItemFocus(() => menuItems[id - 1]);
     }
   };
 
@@ -53,7 +53,7 @@ export default function Menu({ closeSidebar }) {
       if (itemFocus) {
         setItemFocus(() => null);
       } else {
-        setItemFocus(() => menuData.items[id - 1]);
+        setItemFocus(() => menuItems[id - 1]);
       }
     }
   };
@@ -62,7 +62,7 @@ export default function Menu({ closeSidebar }) {
     <>
       <div className="tile is-ancestor is-justify-content-center">
         <div className="tile is-parent is-flex is-8 is-vertical is-align-items-center">
-          {menuData.items.map((item) => (
+          {menuItems.map((item) => (
             item.isAvailable && (
               <MenuItem
                 image={imgSelector(item.name.toLowerCase())}
@@ -73,7 +73,6 @@ export default function Menu({ closeSidebar }) {
                 toggleModalEnter={(e) => toggleModalEnter(e, item.id)}
                 forceHover={false}
                 key={item.id}
-                tabIndex={isModal ? -1 : 0}
               />
             )
           ))}

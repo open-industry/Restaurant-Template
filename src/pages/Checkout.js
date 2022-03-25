@@ -1,11 +1,23 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useCartContext } from '../components/cart/CartProvider';
 import imgSelector from '../img/imgSelector';
 import DonateCard from '../components/DonateCard';
 
+const { cryptos } = require('../data/db.json');
+
 function Checkout() {
-  const focusFooter = () => {
+  const { clearCart } = useCartContext();
+  const navigate = useNavigate();
+
+  const clickFooter = () => {
     const footer = document.querySelector('footer>a');
     footer.click();
+  };
+
+  const handleDoneOnClick = () => {
+    clearCart();
+    navigate('/');
   };
 
   return (
@@ -13,14 +25,23 @@ function Checkout() {
       <div className="message-body has-text-centered">
         <p className="is-size-2">Coming Soon </p>
         <p className="is-size-4 has-text-weight-light">Support a struggling developer</p>
-        <div className="is-flex is-flex-direction-column is-align-items-center donate-container py-3">
-          <DonateCard img={imgSelector('bitcoin')} address="bc1qgwluzwpe8t39fqqylsxvd0lp6d0wyw2md2r7nm" label="BTC &#40;SegWit&#41;" />
-          <DonateCard img={imgSelector('cardano')} address="DdzFFzCqrhssNBn9HMyQudRhP1nN2NEheFz57BKipZhBS9RiCFxb31U7KgjFioCyVG33VcAsVXZwwYfG6DSYKs46tN3M8SMkph1jYmfE" label="ADA" />
-          <button className="button is-warning" onClick={focusFooter} type="button" style={{ minWidth: '150px' }}>
+        <div className="is-flex is-flex-wrap-wrap is-align-items-center is-justify-content-center donate-container py-3">
+          {cryptos.map((protocol) => protocol.isAvailable && (
+            <DonateCard
+              img={imgSelector(protocol.name)}
+              protocol={protocol}
+              key={protocol.id}
+            />
+          ))}
+          <button className="button is-warning" onClick={clickFooter} type="button" style={{ minWidth: '150px' }} title="Offer work">
             <p>Work With Me</p>
           </button>
         </div>
         <p className="is-size-4 has-text-weight-light">UNDER CONSTRUCTION</p>
+        <div className="buttons is-justify-content-center mt-5">
+          <button className="button is-danger is-outlined" onClick={() => navigate(-1)} type="button" style={{ width: '100px' }}>Previous</button>
+          <button className="button is-danger" onClick={handleDoneOnClick} type="button" style={{ width: '100px' }}>Done</button>
+        </div>
       </div>
     </article>
   );

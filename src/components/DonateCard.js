@@ -4,14 +4,16 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FaCopy } from 'react-icons/fa';
 import focusTrap from './focusTrap';
 
-function DonateCard({ img, address, label }) {
+function DonateCard({ img, protocol }) {
   const [showAddress, setShowAddress] = useState(() => false);
   const [isCopy, setIsCopy] = useState(() => false);
+
+  const { symbol, label, address } = protocol;
 
   const modalRef = useRef();
 
   useEffect(() => {
-    if (isCopy) setTimeout(() => setIsCopy(() => false), 2000);
+    if (isCopy) setTimeout(() => setIsCopy(() => false), 3500);
   }, [isCopy]);
 
   const toggleShowAddress = () => {
@@ -41,7 +43,7 @@ function DonateCard({ img, address, label }) {
 
   return (
     <>
-      <button className="button is-warning" type="button" onClick={toggleShowAddress} style={{ minWidth: '150px' }} aria-label={`donate ${label}`}>
+      <button className="button is-warning" type="button" onClick={toggleShowAddress} style={{ minWidth: '150px' }} title={`Donate ${symbol}`} aria-label={`donate ${label}`}>
         <p>{label}</p>
       </button>
       <div className={`modal ${showAddress ? 'is-active' : ''}`} ref={modalRef}>
@@ -55,10 +57,10 @@ function DonateCard({ img, address, label }) {
               <p className="has-text-warning-dark" style={{ wordWrap: 'break-word' }}>
                 {address}
               </p>
-              <button className="icon is-clickable is-pulled-right" type="button" onClick={handleAddressOnClick} aria-label={`copy ${label} address to clipboard`}>
+              <button className="icon is-clickable is-pulled-right" type="button" onClick={handleAddressOnClick} title="Click to copy" aria-label={`copy ${label} address to clipboard`}>
                 <i><FaCopy color="hsl(348, 86%, 43%)" size="1.25em" /></i>
               </button>
-              <span className={`tag is-info mx-auto copy-notification ${isCopy ? 'is-active' : ''}`}>address copied to clipboard</span>
+              <span className={`tag is-success mx-auto copy-notification ${isCopy ? 'is-active' : ''}`}>{`Copied ${label} address to clipboard`}</span>
             </div>
           </div>
         </div>

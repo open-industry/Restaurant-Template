@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 // BrowserRouter in index.js
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { TiShoppingCart } from 'react-icons/ti';
 import Home from './pages/Home';
 import Menu from './pages/Menu';
@@ -64,7 +64,7 @@ function App() {
             <Routes>
               <Route path="/menu" element={<Menu closeSidebar={closeSidebar} />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/checkout" element={cartContent.length > 0 ? <Checkout /> : <Navigate to="/menu" />} />
               <Route path="/" element={<Home />} />
             </Routes>
           </div>
