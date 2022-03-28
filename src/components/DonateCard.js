@@ -13,7 +13,7 @@ function DonateCard({ img, protocol }) {
   const modalRef = useRef();
 
   useEffect(() => {
-    if (isCopy) setTimeout(() => setIsCopy(() => false), 3500);
+    if (isCopy) setTimeout(() => setIsCopy(() => false), 2000);
   }, [isCopy]);
 
   const toggleShowAddress = () => {

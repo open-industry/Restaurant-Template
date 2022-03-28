@@ -15,6 +15,12 @@ function Checkout() {
     footer.click();
   };
 
+  const handlePreviousOnClick = () => {
+    const cartButton = document.getElementById('cart-button');
+    navigate(-1);
+    cartButton.click();
+  };
+
   const handleDoneOnClick = () => {
     clearCart();
     navigate('/');
@@ -39,7 +45,7 @@ function Checkout() {
         </div>
         <p className="is-size-4 has-text-weight-light">UNDER CONSTRUCTION</p>
         <div className="buttons is-justify-content-center mt-5">
-          <button className="button is-danger is-outlined" onClick={() => navigate(-1)} type="button" style={{ width: '100px' }}>Previous</button>
+          <button className="button is-danger is-outlined" onClick={handlePreviousOnClick} type="button" style={{ width: '100px' }}>Previous</button>
           <button className="button is-danger" onClick={handleDoneOnClick} type="button" style={{ width: '100px' }}>Done</button>
         </div>
       </div>

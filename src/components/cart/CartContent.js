@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { MdOutlineRemoveShoppingCart } from 'react-icons/md';
 import CartEntry from './CartEntry';
 import focusTrap from '../focusTrap';
 import { useCartContext } from './CartProvider';
@@ -123,7 +124,10 @@ function CartContent({ isShowCart, toggleShowCart, hideCart }) {
               </form>
             </>
           ) : (
-            <div className="has-text-centered">
+            <div className="has-text-centered p-3">
+              <span className="icon" style={{ height: '5rem', width: '5rem' }}>
+                <i><MdOutlineRemoveShoppingCart size="80px" color="hsl(348, 86%, 43%)" /></i>
+              </span>
               <h1 className="title has-text-warning-dark">Cart is empty</h1>
             </div>
           )}

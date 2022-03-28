@@ -6,6 +6,7 @@ import btc from './btc.png';
 import ada from './ada.png';
 import usdt from './usdt.png';
 import bnb from './bnb.png';
+import emptyCart from './empty-cart.svg';
 
 export default function imgSelector(str) {
   switch (str) {
@@ -25,6 +26,8 @@ export default function imgSelector(str) {
       return usdt;
     case 'bnb':
       return bnb;
+    case 'cart empty':
+      return emptyCart;
     default:
       return null;
   }

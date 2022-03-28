@@ -53,7 +53,7 @@ function App() {
       <main className="section has-background-danger-dark">
         <div className="container is-flex is-align-items-center is-justify-right-desktop" style={{ position: 'initial' }}>
           <Sidebar onClick={toggleSidebar} sidebar={sidebar} />
-          <button className="icon is-medium is-clickable badge" value={cartContent.length} type="button" onClick={toggleShowCart}>
+          <button id="cart-button" className="icon is-medium is-clickable badge" value={cartContent.length} type="button" onClick={toggleShowCart}>
             <i><TiShoppingCart color="#f5f5f5" size="29px" /></i>
           </button>
         </div>
