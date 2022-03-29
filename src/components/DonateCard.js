@@ -54,7 +54,7 @@ function DonateCard({ img, protocol }) {
               <img src={img} alt={`${label} address QR code`} />
             </div>
             <div className="card-content">
-              <p className="has-text-warning-dark" style={{ wordWrap: 'break-word' }}>
+              <p className="has-text-warning-dark has-text-left" style={{ wordWrap: 'break-word' }}>
                 {address}
               </p>
               <button className="icon is-clickable is-pulled-right" type="button" onClick={handleAddressOnClick} title="Click to copy" aria-label={`copy ${label} address to clipboard`}>

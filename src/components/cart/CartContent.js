@@ -22,9 +22,15 @@ function CartContent({ isShowCart, toggleShowCart, hideCart }) {
   const { cartContent, updateCart } = useCartContext();
 
   const handleKeydown = (e) => {
-    if (e.key === 'Escape') hideCart();
+    if (e.key === 'Escape') {
+      // sync cartContent with invoice
+      setInvoice(() => cartContent.map((cartItem) => (
+        { ...cartItem, subtotal: Number((cartItem.item.price * cartItem.qty).toFixed(2)) }
+      )));
 
-    else if (e.key === 'Tab') focusTrap(e, modalRef.current);
+      // close modal
+      hideCart();
+    } else if (e.key === 'Tab') focusTrap(e, modalRef.current);
   };
 
   useEffect(() => {
@@ -34,12 +40,9 @@ function CartContent({ isShowCart, toggleShowCart, hideCart }) {
   }, [isShowCart]);
 
   useEffect(() => {
-    const tempInvoice = cartContent.map((cartItem) => {
-      const itemInvoice = { ...cartItem, subtotal: Number((cartItem.item.price * cartItem.qty).toFixed(2)) };
-      return itemInvoice;
-    });
-
-    setInvoice(() => tempInvoice);
+    setInvoice(() => cartContent.map((cartItem) => (
+      { ...cartItem, subtotal: Number((cartItem.item.price * cartItem.qty).toFixed(2)) }
+    )));
   }, [cartContent]);
 
   const increment = (index) => {
