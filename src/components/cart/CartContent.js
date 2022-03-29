@@ -43,21 +43,21 @@ function CartContent({ isShowCart, toggleShowCart, hideCart }) {
   }, [cartContent]);
 
   const increment = (index) => {
-    setInvoice((prevState) => {
-      const tempInvoice = [...prevState];
-      tempInvoice[index].qty = Math.max(MINQTY, Math.min(MAXQTY, tempInvoice[index].qty + 1));
-      tempInvoice[index].subtotal = Number((tempInvoice[index].item.price * tempInvoice[index].qty).toFixed(2));
-      return tempInvoice;
-    });
+    setInvoice((prevState) => prevState.map((invoiceItem, i) => (
+      i === index ? {
+        ...invoiceItem,
+        qty: Math.min(MAXQTY, invoiceItem.qty + 1),
+        subtotal: Number((Math.min(MAXQTY, invoiceItem.qty + 1) * invoiceItem.item.price).toFixed(2)),
+      } : invoiceItem)));
   };
 
   const decrement = (index) => {
-    setInvoice((prevState) => {
-      const tempInvoice = [...prevState];
-      tempInvoice[index].qty = Math.max(MINQTY, Math.min(MAXQTY, tempInvoice[index].qty - 1));
-      tempInvoice[index].subtotal = Number((tempInvoice[index].item.price * tempInvoice[index].qty).toFixed(2));
-      return tempInvoice;
-    });
+    setInvoice((prevState) => prevState.map((invoiceItem, i) => (
+      i === index ? {
+        ...invoiceItem,
+        qty: Math.max(MINQTY, invoiceItem.qty - 1),
+        subtotal: Number((Math.max(MINQTY, invoiceItem.qty - 1) * invoiceItem.item.price).toFixed(2)),
+      } : invoiceItem)));
   };
 
   const handleEntryOnChange = (index) => {
