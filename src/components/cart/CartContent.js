@@ -31,9 +31,10 @@ function CartContent({ isShowCart, hideCart }) {
   };
 
   const handleKeydown = (e) => {
-    if (e.key === 'Escape') closeModal();
-
-    else if (e.key === 'Tab') focusTrap(e, modalRef.current);
+    if (e.key === 'Escape') {
+      syncInvoice();
+      hideCart();
+    } else if (e.key === 'Tab') focusTrap(e, modalRef.current);
   };
 
   useEffect(() => {
@@ -86,7 +87,7 @@ function CartContent({ isShowCart, hideCart }) {
 
   return (
     <div className={`modal ${isShowCart ? 'is-active' : ''}`} ref={modalRef}>
-      <div className="modal-background" onClick={hideCart} />
+      <div className="modal-background" onClick={closeModal} />
       <div className="modal-content is-flex is-justify-content-center">
         <div className="box has-background-warning">
           {cartContent.length > 0 ? (
