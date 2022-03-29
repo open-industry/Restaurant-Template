@@ -60,7 +60,7 @@ function App() {
         <div className="container">
           <div className="box">
             <HorizontalNav />
-            <CartContent isShowCart={isShowCart} toggleShowCart={toggleShowCart} hideCart={hideCart} />
+            <CartContent isShowCart={isShowCart} hideCart={hideCart} />
             <Routes>
               <Route path="/menu" element={<Menu closeSidebar={closeSidebar} />} />
               <Route path="/contact" element={<Contact />} />

@@ -8,11 +8,9 @@ import focusTrap from '../focusTrap';
 import { useCartContext } from './CartProvider';
 import CONSTANTS from '../../data/constants';
 
-// create focus trap and event listeners for modal
-
 const { MINQTY, MAXQTY } = CONSTANTS;
 
-function CartContent({ isShowCart, toggleShowCart, hideCart }) {
+function CartContent({ isShowCart, hideCart }) {
   const [invoice, setInvoice] = useState([]);
 
   const modalRef = useRef();
@@ -21,16 +19,21 @@ function CartContent({ isShowCart, toggleShowCart, hideCart }) {
 
   const { cartContent, updateCart } = useCartContext();
 
-  const handleKeydown = (e) => {
-    if (e.key === 'Escape') {
-      // sync cartContent with invoice
-      setInvoice(() => cartContent.map((cartItem) => (
-        { ...cartItem, subtotal: Number((cartItem.item.price * cartItem.qty).toFixed(2)) }
-      )));
+  const syncInvoice = () => {
+    setInvoice(() => cartContent.map((cartItem) => (
+      { ...cartItem, subtotal: Number((cartItem.item.price * cartItem.qty).toFixed(2)) }
+    )));
+  };
 
-      // close modal
-      hideCart();
-    } else if (e.key === 'Tab') focusTrap(e, modalRef.current);
+  const closeModal = () => {
+    syncInvoice();
+    hideCart();
+  };
+
+  const handleKeydown = (e) => {
+    if (e.key === 'Escape') closeModal();
+
+    else if (e.key === 'Tab') focusTrap(e, modalRef.current);
   };
 
   useEffect(() => {
@@ -40,9 +43,7 @@ function CartContent({ isShowCart, toggleShowCart, hideCart }) {
   }, [isShowCart]);
 
   useEffect(() => {
-    setInvoice(() => cartContent.map((cartItem) => (
-      { ...cartItem, subtotal: Number((cartItem.item.price * cartItem.qty).toFixed(2)) }
-    )));
+    syncInvoice();
   }, [cartContent]);
 
   const increment = (index) => {
@@ -136,7 +137,7 @@ function CartContent({ isShowCart, toggleShowCart, hideCart }) {
           )}
         </div>
       </div>
-      <button className="modal-close is-large" type="button" onClick={toggleShowCart} aria-label="close modal" />
+      <button className="modal-close is-large" type="button" onClick={closeModal} aria-label="close modal" />
     </div>
   );
 }
