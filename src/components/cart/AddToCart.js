@@ -96,6 +96,7 @@ function AddToCart({ isAddCart, toggleModalClick, itemFocus }) {
             toggleModalClick(itemFocus.id);
           }}
           aria-label="add to cart"
+          disabled={quantity === MINQTY}
         >
           Add to cart
         </button>
