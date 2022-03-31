@@ -6,21 +6,29 @@ import { MdClose } from 'react-icons/md';
 import NavLinks from './NavLinks';
 import './Sidebar.css';
 
+// Sidebar component for mobile/touch devices expects two props
+// onClick: function and sidebar: boolean
 function Sidebar({ onClick, sidebar }) {
+  // ref of sidebar nav container for enabling/disabling keyboard navigation
   const navMenuRef = useRef();
 
+  // useLocation hook from react-router-dom used to get current path name
   const location = useLocation();
 
   useEffect(() => {
+    // get all anchor tags from navMenuRef container
     const anchorTags = navMenuRef.current.querySelectorAll('a');
+
+    // if sidebar is active
     if (sidebar) {
       Array.from(anchorTags).forEach((anchorTag) => {
-        // set tab index to 0 for all links
+        // set tab index to 0 for all links for keyboard navigation
         anchorTag.setAttribute('tabindex', 0);
       });
+      // else if inactive
     } else {
       Array.from(anchorTags).forEach((anchorTag) => {
-        // set tab index to -1 for all links
+        // set tab index to -1 for all links to prevent keyboard navigation while inactive
         anchorTag.setAttribute('tabindex', -1);
       });
     }

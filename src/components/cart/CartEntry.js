@@ -1,8 +1,10 @@
 import React from 'react';
 import CONSTANTS from '../../data/constants';
-
+// import minimum and maximum quantity values from constants
 const { MINQTY, MAXQTY } = CONSTANTS;
 
+// CartEntry component expects four props:
+// invoiceItem: object, increment: function, decrement: function, handleEntryOnChange: function
 function CartEntry({ invoiceItem, increment, decrement, handleEntryOnChange }) {
   return (
     <tr>
@@ -21,7 +23,9 @@ function CartEntry({ invoiceItem, increment, decrement, handleEntryOnChange }) {
             />
           </div>
           <div className="control is-flex is-flex-direction-column">
+            {/* increment spin button */}
             <button className="spin-button is-clickable" type="button" onClick={increment} role="spinbutton" aria-label={`increment ${invoiceItem.item.name} quantity`}>˄</button>
+            {/* decrement spin button */}
             <button className="spin-button is-clickable" type="button" onClick={decrement} role="spinbutton" aria-label={`decrement ${invoiceItem.item.name} quantity`}>˅</button>
           </div>
         </div>

@@ -27,7 +27,8 @@
         "max-len": ["error", {
             "code": 120,
             "ignoreUrls": true,
-            "ignoreStrings": true
+            "ignoreStrings": true,
+            "ignoreComments": true
         }],
         // requires that react components be function delcarations (eg. function componentName(){})
         "react/function-component-definition": [2, {
