@@ -73,7 +73,9 @@ div.message-body {
   left: 0;
   right: 0;
   max-width: fit-content;
-  animation: fade-in 1800ms ease-out;
+  animation: fade-in 2000ms ease-out forwards;
+  opacity: 0;
+  transform: translateY(25%);
 }
 
 .copy-notification.is-active {
@@ -81,17 +83,17 @@ div.message-body {
 }
 
 @keyframes fade-in {
-  0% {
-    opacity: 0%;
+  20% {
+    opacity: 1;
+    transform: translateY(0);
   }
-  25% {
-    opacity: 100%;
-  }
-  75% {
-    opacity: 100%;
+  80% {
+    opacity: 1;
+    transform: translateY(0);
   }
   100% {
-    opacity: 0%;
+    opacity: 0;
+    transform: translateY(25%);
   }
 }
 
