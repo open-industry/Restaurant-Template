@@ -8,15 +8,116 @@ iframe {
 }
 
 /* hover effect for menu items */
-div.card:hover {
+div.card:hover,
+.hovered {
   transform: scale(1.05);
   border-color: gold;
   box-shadow: 0 0 .5rem gold;
 }
 
+/* disable card hover effect for DonateCard */
+div.card.no-scale:hover {
+  transform: none;
+}
+
+/* DonateCard container */
+div.card.no-scale {
+  border-color: gold;
+  box-shadow: 0 0 .5rem gold;
+}
+
+/* page content border */
+div.message-body {
+  border-width: 3px!important;
+}
+
 /* for Link components */
 .active-font {
   color: #C79200!important;
+}
+
+/* for Home page */
+.is-transparent {
+  background-color: transparent!important;
+  box-shadow: none!important;
+}
+
+/* for sidebard and cart container in App.js, has media query rules for desktop*/
+.is-justify-right-desktop {
+  justify-content: space-between;
+}
+
+.has-text-bgc {
+  color: hsl(348, 86%, 43%);
+}
+
+/* cart content count badge for <i> element of cart button*/
+.badge:after {
+  content: attr(value);
+  font-family: 'Kanit', sans-serif!important;
+  color: hsl(348, 86%, 43%);
+  min-width: 19px;
+  font-size: .8rem;
+  background: #ffe08a;
+  border-radius: 50%;
+  padding: 0 5px;
+  position: relative;
+  left: -8px;
+  top: -10px;
+  opacity: 0.9;
+}
+
+.donate-container {
+  gap: .5rem;
+}
+
+/* copy tool-tip notification for DonateCard */
+.copy-notification {
+  display: none!important;
+  opacity: 0%;
+  position: absolute;
+  /* left and right attributes aligns absolute positioned element in the middle of relative container */
+  left: 0;
+  right: 0;
+  max-width: fit-content;
+  animation: fade-in 2000ms ease-out forwards;
+  transform: translateY(25%); /* position element lower on Y-axis by 25% of its height */
+}
+
+/* hides tool-tip notification */
+.copy-notification.is-active {
+  display: flex!important;
+}
+
+@keyframes fade-in {
+  20% {
+    opacity: 1;
+    transform: translateY(0); /* move element back to its proper position */
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(25%);
+  }
+}
+
+.modal-background {
+  background-color: rgba(10,10,10,.70)!important;
+}
+
+/* for modals to animate smoothly into view */
+.modal {
+ animation: fade 200ms ease-in-out forwards;
+ opacity: 0;
+}
+
+@keyframes fade {
+  100% {
+    opacity: 1;
+  }
 }
 
 /* if display is less than or equal to 1023px (less than desktop) */
@@ -45,6 +146,7 @@ div.card:hover {
     flex-wrap: wrap;
   }
   
+  /* for Home page */
   .img-container {
     width: 100%;
     height: 100%;
@@ -54,18 +156,25 @@ div.card:hover {
 /* display is greater than or equal to 1024px (desktop or greater only) */
 @media (min-width: 1024px) {
     article {
-      width: 50%;
+      width: 100%;
   }
   
+  /* for Home page */
   .img-container {
     width: 66%;
     height: 66%;
-  }  
+  }
+
+  /* for sidebard and cart container in App.js */
+  .is-justify-right-desktop {
+    justify-content: flex-end;
+  }
 }
 
 @media (max-width: 399px) {
+  /* reduce padding of hero-body to fit content on mobile */
   .hero-body {
-    padding: 0!important;
+    padding: 1rem 0 0!important;
   }
 }
 
@@ -73,7 +182,7 @@ div.card:hover {
   keeps footer at the bottom of page
   requires div#root min-height 100vh
 */
-div#root > footer {
+#root > footer {
   position: sticky;
   top: 100vh;
   background-color: transparent;

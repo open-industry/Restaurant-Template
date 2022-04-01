@@ -1,10 +1,10 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import NavLinks from './NavLinks';
-import { useNavContext } from './navContext';
 
 function HorizontalNav() {
-  // location provided as context by navContext.js
-  const location = useNavContext();
+  // useLocation hook from react-router-dom used to get current path name
+  const location = useLocation();
 
   return (
     <div className="tabs is-large is-boxed is-centered is-hidden-touch">

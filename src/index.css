@@ -1,9 +1,10 @@
 /* import google font "Kanit" */
-@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,400;0,600;1,300&display=swap');
+
 
 /* CSS reset */
 * {
-  font-family: 'Kanit', sans-serif;
+  font-family: 'Kanit', sans-serif!important;
   box-sizing: border-box;
   padding: 0;
   margin: 0;

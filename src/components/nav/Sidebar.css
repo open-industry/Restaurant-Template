@@ -4,11 +4,11 @@
   position: absolute;
   background-color: #ab1236;
   z-index: 1;
-  transition: 850ms;
+  transition: left 250ms ease-in;
   padding: 0px .5rem;
-  top: calc(48px + 24px); /* parent padding + burger icon height */
-  bottom: -32px; /* -height of footer to reach bottom of document */
-  left: -100%;
+  top: calc(48px + 30px); /* parent padding + burger icon height */
+  bottom: -68px; /* -height of footer to reach bottom of document */
+  left: -132px; /* width of nav-menu */
   border-radius: 0px 4px 4px 0px;
   border-color: gold;
   box-shadow: 0 0 .4rem gold;
@@ -16,8 +16,9 @@
 
 /* slides sidebar to view when active */
 .nav-menu.is-active {
+  /* left: -24px; */ /* offset main element padding */
   left: 0;
-  transition: 350ms;
+  transition: left 450ms ease-out;
 }
 
 /* highlights active nav item */
