@@ -1,3 +1,4 @@
+/* for CartEntry increment/decrement qty */
 .spin-button {
   display: inline-flex;
   background-color: #F03A5F;
@@ -18,6 +19,7 @@
   border-radius: 0 0 3px;
 }
 
+/* feedback animation for spin-button clicks */
 .spin-button:active {
   transform: scale(1.1);
   box-shadow: 0 0 .5rem gold;
@@ -27,10 +29,13 @@
   box-shadow: 0 0 0 .125em rgba(241,70,104,.25)!important;
 }
 
+/* remove browser default blue focus outline */
 .spin-button:focus-visible {
   outline: none;
 }
 
+
+/* for AddToCart interactive UI component */
 .add-to-cart {
   display: flex;
   align-items: center;
@@ -44,9 +49,10 @@
   transition: bottom 200ms ease-in;
   border: 1px solid hsl(348, 86%, 43%);
   box-shadow: 0 0 .5rem hsl(348, 86%, 43%);
-  animation: slide-in 350ms ease-out;
+  animation: slide-in 350ms ease-out; /* component slide-in animation on modal open */
 }
 
+/* for AddToCart slide-out animation before modal close */
 .slide-out {
   bottom: -10vh;
 }

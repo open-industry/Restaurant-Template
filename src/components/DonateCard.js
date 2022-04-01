@@ -81,7 +81,12 @@ function DonateCard({ img, protocol }) {
               <button className="icon is-clickable is-pulled-right" type="button" onClick={handleAddressOnClick} title="Click to copy" aria-label={`copy ${label} address to clipboard`}>
                 <i><FaCopy color="hsl(348, 86%, 43%)" size="1.25em" /></i>
               </button>
-              <span className={`tag is-success mx-auto copy-notification ${isCopy ? 'is-active' : ''}`}>{`Copied ${label} address to clipboard`}</span>
+              <span
+                className={`tag is-success mx-auto copy-notification ${isCopy ? 'is-active' : ''}`}
+                style={{ borderRadius: '20px' }}
+              >
+                {`Copied ${label} address to clipboard`}
+              </span>
             </div>
           </div>
         </div>

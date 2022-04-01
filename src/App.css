@@ -15,15 +15,18 @@ div.card:hover,
   box-shadow: 0 0 .5rem gold;
 }
 
+/* disable card hover effect for DonateCard */
 div.card.no-scale:hover {
   transform: none;
 }
 
+/* DonateCard container */
 div.card.no-scale {
   border-color: gold;
   box-shadow: 0 0 .5rem gold;
 }
 
+/* page content border */
 div.message-body {
   border-width: 3px!important;
 }
@@ -33,11 +36,13 @@ div.message-body {
   color: #C79200!important;
 }
 
+/* for Home page */
 .is-transparent {
   background-color: transparent!important;
   box-shadow: none!important;
 }
 
+/* for sidebard and cart container in App.js, has media query rules for desktop*/
 .is-justify-right-desktop {
   justify-content: space-between;
 }
@@ -66,18 +71,20 @@ div.message-body {
   gap: .5rem;
 }
 
+/* copy tool-tip notification for DonateCard */
 .copy-notification {
   display: none!important;
   opacity: 0%;
   position: absolute;
+  /* left and right attributes aligns absolute positioned element in the middle of relative container */
   left: 0;
   right: 0;
   max-width: fit-content;
   animation: fade-in 2000ms ease-out forwards;
-  opacity: 0;
-  transform: translateY(25%);
+  transform: translateY(25%); /* position element lower on Y-axis by 25% of its height */
 }
 
+/* hides tool-tip notification */
 .copy-notification.is-active {
   display: flex!important;
 }
@@ -85,7 +92,7 @@ div.message-body {
 @keyframes fade-in {
   20% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0); /* move element back to its proper position */
   }
   80% {
     opacity: 1;
@@ -101,6 +108,7 @@ div.message-body {
   background-color: rgba(10,10,10,.70)!important;
 }
 
+/* for modals to animate smoothly into view */
 .modal {
  animation: fade 200ms ease-in-out forwards;
  opacity: 0;
@@ -138,6 +146,7 @@ div.message-body {
     flex-wrap: wrap;
   }
   
+  /* for Home page */
   .img-container {
     width: 100%;
     height: 100%;
@@ -147,21 +156,23 @@ div.message-body {
 /* display is greater than or equal to 1024px (desktop or greater only) */
 @media (min-width: 1024px) {
     article {
-      /* width: 50%; */
       width: 100%;
   }
   
+  /* for Home page */
   .img-container {
     width: 66%;
     height: 66%;
   }
 
+  /* for sidebard and cart container in App.js */
   .is-justify-right-desktop {
     justify-content: flex-end;
   }
 }
 
 @media (max-width: 399px) {
+  /* reduce padding of hero-body to fit content on mobile */
   .hero-body {
     padding: 1rem 0 0!important;
   }

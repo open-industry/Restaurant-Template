@@ -2,17 +2,13 @@
     requires <main> or parent position: relative (!== static) */
 .nav-menu {
   position: absolute;
-  /* position: fixed; */
   background-color: #ab1236;
   z-index: 1;
   transition: left 250ms ease-in;
   padding: 0px .5rem;
-  /* top: +24px; */ /* burger icon height */
   top: calc(48px + 30px); /* parent padding + burger icon height */
-  /* bottom: 0; */ /* -height of footer to reach bottom of document */
   bottom: -68px; /* -height of footer to reach bottom of document */
-  /* left: calc(-130px + -24px); */ /* offset main element padding + menu width */
-  left: -132px; /* width of nav-meny */
+  left: -132px; /* width of nav-menu */
   border-radius: 0px 4px 4px 0px;
   border-color: gold;
   box-shadow: 0 0 .4rem gold;
