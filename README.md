@@ -16,6 +16,7 @@
 
 * **JavaScript**
   - [x] module pattern
+  - [x] custom focus-trap module
 * **ReactJS**
   - [x] custom hook
   - [x] custom context component
@@ -26,3 +27,5 @@
   - [x] responsive design
 * **CSS**
 * **HTML**
+  - [x] ARIA compliant
+  - [x] keyboard navigation friendly
